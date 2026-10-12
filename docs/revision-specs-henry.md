@@ -61,7 +61,7 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 ## Lista de verificación de cierre
 
 - [x] Se revisaron con asistencia de IA las cinco SPECS (S01–S05) y se contrastaron los 43 criterios con el código y las pruebas disponibles; las limitaciones de cobertura están documentadas.
-- [ ] Comprobar exhaustivamente las 43 correspondencias de `docs/matriz-spec-codigo.md` con rutas, pruebas y resultados individualizados.
+- [x] Se cotejaron de manera guiada las 43 correspondencias de `docs/matriz-spec-codigo.md`, con código, pruebas y resultados disponibles. Las limitaciones de cobertura automatizada permanecen documentadas.
 - [x] Se contrastaron los permisos y transiciones principales con el enunciado y las pruebas existentes; S03-07, S04-08/09 y S05-04/06 tienen ahora cobertura complementaria aprobada en CI. Su verificación humana exhaustiva sigue pendiente.
 - [x] Se ejecutó `py -3.12 -m pytest -q` en la copia temporal (58 aprobadas, 0 fallidas); se registraron el SHA base, los commits del PR #22 y la ejecución exitosa de CI.
 - [x] Se documentaron hallazgos, limitaciones y ampliaciones de pruebas S03, S04 y S05, sin afirmar ausencia total de defectos.
