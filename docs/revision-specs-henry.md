@@ -119,7 +119,7 @@ Se incorporó `tests/test_auditoria_henry_criteria.py`, con 9 casos de prueba ad
 
 **Resultado de CI confirmado:** `67 passed in 25.88s`, 0 pruebas fallidas en [GitHub Actions #38312929603](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38312929603), correspondiente al commit `a78b5a741c444dc2139e9ef38812f3b334c00091`. El commit documental posterior `d0cf9361d067de5edecf5e09dc982114a5a17d3f` también completó correctamente el trabajo `pytest` en [GitHub Actions #38313123114](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38313123114).
 
-**Alcance:** cobertura automatizada reforzada y evidencias de trazabilidad publicadas en `docs/matriz-spec-codigo.md`. Esto no significa que Henry haya ejecutado personalmente esta nueva batería ni constituye su aprobación humana. La casilla de comprobación exhaustiva de las 43 correspondencias permanece sin marcar hasta que el responsable realice y documente la revisión.
+**Alcance:** cobertura automatizada reforzada y evidencias de trazabilidad publicadas en `docs/matriz-spec-codigo.md`. Esto no significa que Henry haya ejecutado personalmente esta nueva batería ni constituye su aprobación humana. El cotejo guiado de las 43 correspondencias se registró posteriormente; la auditoría independiente y la aprobación formal siguen pendientes.
 
 
 ## Acta de cotejo guiado — 12/10/2026
