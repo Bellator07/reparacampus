@@ -6,28 +6,61 @@
   <title>{% block title %}ReparaCampus{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <header class="topbar">
-    <div>
-      <strong>ReparaCampus</strong>
-      <span class="subtitle">Incidencias de infraestructura</span>
+<body class="{{ 'app-body' if g.user else 'auth-body' }}">
+  {% if g.user %}
+  <header class="site-header">
+    <a class="site-brand" href="{{ url_for('index') }}" aria-label="ReparaCampus, página principal">
+      <img src="{{ url_for('static', filename='aula-logo.png') }}" alt="Universidad Simón Bolívar · Aula Extendida">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="product-name">ReparaCampus</span>
+    </a>
+    <div class="header-right">
+      <span class="demo-label">Prototipo académico</span>
+      <span class="user-identity">{{ g.user['display_name'] }} · {{ g.user['role'] }}</span>
+      <form method="post" action="{{ url_for('auth.logout') }}" class="logout-form">
+        <button class="logout-button" type="submit">Cerrar sesión</button>
+      </form>
     </div>
-    {% if g.user %}
-      <div class="session">
-        <a class="button secondary" href="{{ url_for('reporting.list_incidents') }}">Consultar</a>
-        <span>{{ g.user['display_name'] }} · {{ g.user['role'] }}</span>
-        <form method="post" action="{{ url_for('auth.logout') }}">
-          <button class="secondary" type="submit">Cerrar sesión</button>
-        </form>
-      </div>
-    {% endif %}
   </header>
 
-  <main class="container">
+  <nav class="top-navigation" aria-label="Navegación principal">
+    <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Inicio</a>
+    {% if g.user['role'] == 'SOLICITANTE' %}
+      <a href="{{ url_for('incidents.index') }}" class="{{ 'active' if request.endpoint == 'incidents.index' else '' }}">Mis incidencias</a>
+      <a href="{{ url_for('incidents.create') }}" class="{{ 'active' if request.endpoint == 'incidents.create' else '' }}">Registrar incidencia</a>
+    {% elif g.user['role'] == 'COORDINADOR' %}
+      <a href="{{ url_for('incidents.manage') }}" class="{{ 'active' if request.endpoint == 'incidents.manage' else '' }}">Gestión de incidencias</a>
+    {% elif g.user['role'] == 'TECNICO' %}
+      <a href="{{ url_for('incidents.assigned') }}" class="{{ 'active' if request.endpoint == 'incidents.assigned' else '' }}">Mis asignaciones</a>
+    {% endif %}
+    <a href="{{ url_for('reporting.list_incidents') }}" class="{{ 'active' if request.endpoint == 'reporting.list_incidents' else '' }}">Consultar</a>
+  </nav>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Menú lateral">
+      <div class="sidebar-heading">GESTIÓN DE INFRAESTRUCTURA</div>
+      <a href="{{ url_for('index') }}" class="sidebar-link">Página principal</a>
+      {% if g.user['role'] == 'SOLICITANTE' %}
+        <a href="{{ url_for('incidents.index') }}" class="sidebar-link">Mis reportes</a>
+        <a href="{{ url_for('incidents.create') }}" class="sidebar-link">Nueva incidencia</a>
+      {% elif g.user['role'] == 'COORDINADOR' %}
+        <a href="{{ url_for('incidents.manage') }}" class="sidebar-link">Asignar incidencias</a>
+      {% elif g.user['role'] == 'TECNICO' %}
+        <a href="{{ url_for('incidents.assigned') }}" class="sidebar-link">Atender asignaciones</a>
+      {% endif %}
+      <a href="{{ url_for('reporting.list_incidents') }}" class="sidebar-link">Consultar e historial</a>
+      <div class="sidebar-foot">ReparaCampus · Examen SDD<br>Acceso mediante cuentas de prueba</div>
+    </aside>
+  {% endif %}
+
+  <main class="{{ 'container' if g.user else 'login-container' }}">
     {% for category, message in get_flashed_messages(with_categories=true) %}
       <div class="flash {{ category }}">{{ message }}</div>
     {% endfor %}
     {% block content %}{% endblock %}
   </main>
+
+  {% if g.user %}
+  </div>
+  {% endif %}
 </body>
 </html>
