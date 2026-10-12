@@ -48,9 +48,27 @@
         {% endif %}
       </td>
 
-      <td>{{ incident['state'] }}</td>
+     
+<td>
+  <span class="state-badge state-{{ incident['state']|lower|replace('_', '-') }}">
+    {{ incident['state']|replace('_', ' ') }}
+  </span>
+</td>
 
-      <td>{{ incident['technician_name'] or 'Sin asignar' }}</td>
+
+      
+<td>
+  {% if incident['technician_name'] %}
+    <span class="technician-assigned">
+      {{ incident['technician_name'] }}
+    </span>
+  {% else %}
+    <span class="technician-unassigned">
+      Sin asignar
+    </span>
+  {% endif %}
+</td>
+
 
       <td>
         {% if incident['state'] == 'REGISTRADA' and not incident['assigned_technician_id'] %}

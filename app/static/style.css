@@ -149,3 +149,57 @@ th { background: #eaf0f6; }
   background: #e5e7eb;
   color: #374151;
 }
+
+/* RF02 - Estados de las incidencias */
+
+.state-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.state-registrada {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.state-asignada {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.state-en-atencion {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.state-pendiente-validacion {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.state-cerrada {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* RF02 - Técnico asignado */
+
+.technician-assigned {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #e0f2fe;
+  color: #075985;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.technician-unassigned {
+  color: #6b7280;
+  font-size: 12px;
+  font-style: italic;
+}
