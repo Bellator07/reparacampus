@@ -69,3 +69,30 @@ Esto ayuda a que la prueba no copie simplemente el mismo cálculo del código de
 ## Regresión
 
 La ejecución final vuelve a correr las pruebas de S01, S02, S03, S04 y S05. Si una modificación del cierre rompe una función anterior, el workflow falla y el PR no debe integrarse.
+
+## Verificación local de la versión final
+
+**Fecha:** 12 de octubre de 2026  
+**Rama:** `main`  
+**Sincronización:** `main` estaba actualizada con `origin/main`.  
+**Commit verificado:** `0d921e6d91f26b29a9ce6347cd17d27b5f5503da`
+
+Comandos ejecutados:
+
+```powershell
+git switch main
+git pull origin main
+.\.venv\Scripts\python.exe -m pytest -q
+git rev-parse HEAD
+```
+
+Resultado observado:
+
+```text
+........................................................ [100%]
+56 passed in 32.42s
+```
+
+**Conclusión:** la suite automatizada se ejecutó correctamente sobre el commit indicado de `main`, con 56 pruebas aprobadas y sin fallos en esta ejecución local.
+
+Esta evidencia corresponde a una ejecución local. El resultado no sustituye la verificación independiente del estado de GitHub Actions para el mismo commit.
