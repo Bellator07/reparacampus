@@ -79,7 +79,7 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 | Pull Request | PR #22 — `docs/auditoria-tecnica-specs` hacia `main`. Abierto y pendiente de revisión independiente. |
 | Usuario GitHub responsable | `nagiberrioreales-design` (cuenta autora del PR #22). Identidad del responsable de la revisión humana pendiente de confirmar. |
 | Revisor de otro integrante | PENDIENTE de revisión independiente. |
-| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | `py -3.12 -m pytest -q` — 58 passed in 21.42s, 0 fallidas. Ejecutadas en Windows con Python 3.12 desde `reparacampus_pruebas`. GitHub Actions #38286451808: trabajo `pytest` exitoso en PR #22. |
+| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | Captura reciente: `py -3.12 -m pytest -q -p no:cacheprovider` — **58 passed in 21.84s**, 0 fallidas, Python 3.12, Windows, `%TEMP%\reparacampus_revision_henry`. En CI del PR #22 se obtuvieron **67 aprobadas** en la versión ampliada; consultar el acta al final de este informe. |
 | Hallazgos y correcciones | Se ampliaron las pruebas de S03 y S04 para verificar persistencia, permisos e historial. Pendiente reforzar S03-07, orden cronológico de S04-08 y S05-04, casos inválidos de S04-09 y conteos detallados de S05-06. |
 | Decisión humana final, con justificación | PENDIENTE: completar después de las verificaciones restantes y la revisión independiente. |
 ## Ejecución general de pruebas — 12/10/2026
