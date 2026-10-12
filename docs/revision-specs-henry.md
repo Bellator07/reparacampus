@@ -3,7 +3,7 @@
 **Proyecto:** ReparaCampus — Ingeniería de Software I.
 **Tipo:** lista de auditoría posterior a la implementación; no sustituye la revisión previa aprobada en [PR #6](https://github.com/nagiberrioreales-design/reparacampus/pull/6).
 **Responsable de completar y validar:** Henry Berrio.
-**Estado real:** COBERTURA AUTOMATIZADA AMPLIADA (67/67 pruebas en CI); comprobación humana exhaustiva, revisión independiente y PDF final pendientes.
+**Estado real (12/10/2026):** cotejo guiado de los 43 criterios realizado con Henry y asistencia de IA. Evidencia: 58 pruebas locales aprobadas y 67 en CI, en versiones distintas; observaciones de cobertura documentadas. La revisión independiente y el PDF final permanecen pendientes.
 **Fecha / usuario GitHub / SHA:** evidencias documentadas en la sección «Datos por completar después de ejecutar»; la cuenta autora del PR no constituye por sí sola prueba de autoría personal de cada verificación.
 
 ## Hallazgo documental corregido
