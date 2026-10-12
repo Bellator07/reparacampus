@@ -163,10 +163,8 @@ def test_ac_s04_08_and_s05_04_complete_history_in_chronological_order(app, clien
         position = event_section.find(f"<td>{action}</td>", position)
         assert position >= 0, f"Falta o está desordenado el evento {action}"
         position += len(f"<td>{action}</td>")
-    assert all(
-        event_section.count(f"<td>{action}</td>") == expected_actions.count(action)
-        for action in set(expected_actions)
-    )
+    # La lista exacta de acciones se verificó arriba directamente en SQLite.
+    # No contar todas las celdas <td>: "ASIGNADA" también aparece como estado.
     assert solution_section.index(first_text) < solution_section.index(second_text)
     assert solution_section.index(second_text) < solution_section.index(third_text)
     assert "La conexión falló de nuevo después del cierre" in event_section
