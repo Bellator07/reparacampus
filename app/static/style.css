@@ -70,3 +70,34 @@ th, td {
   vertical-align: top;
 }
 th { background: #eaf0f6; }
+
+/* RF02 - Etiquetas de prioridad del coordinador */
+
+.priority-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.priority-critical {
+  background: #fde8e8;
+  color: #991b1b;
+}
+
+.priority-high {
+  background: #fff3cd;
+  color: #92400e;
+}
+
+.priority-normal {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.priority-pending {
+  background: #e5e7eb;
+  color: #374151;
+}
