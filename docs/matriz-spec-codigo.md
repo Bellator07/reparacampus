@@ -8,16 +8,18 @@
 
 La lectura de cada fila es: requisito → criterio → comportamiento esperado → archivo que lo implementa → prueba que lo comprueba.
 
+**Informe de auditoría documental:** [Cotejo asistido de los 43 criterios](cotejo-asistido-matriz-43-ac.md). Se localizaron las referencias y pruebas para las 43 filas. Siete criterios muestran **observaciones sobre aserciones que no comprueban explícitamente algún subefecto**; por transparencia, sus estados se marcan como cobertura de aserciones parcial. Los 67 tests siguen aprobados, sin que esto equivalga a revisión humana firmada. La validación personal de Henry permanece pendiente.
+
 ## S01 / RF01 — Registrar
 
 | Criterio | Comportamiento esperado | Código | Prueba / datos | Efecto esperado en SQLite | Estado |
 |---|---|---|---|---|---|
-| AC-S01-01 | Datos válidos crean incidencia con código, autor de sesión, UTC y REGISTRADA | `app/incidents.py` | `test_s01_registration_persists_incident_and_history` | 1 incidencia + 1 evento CREADA | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S01-02 | Descripción de 19 caracteres se rechaza | `app/domain.py` | `test_s01_rejects_description_outside_limits[19]` | sin alta | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S01-01 | Datos válidos crean incidencia con código, autor de sesión, UTC y REGISTRADA | `app/incidents.py` | `test_s01_registration_persists_incident_and_history` | 1 incidencia + 1 evento CREADA | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
+| AC-S01-02 | Descripción de 19 caracteres se rechaza | `app/domain.py` | `test_s01_rejects_description_outside_limits[19]` | sin alta | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 | AC-S01-03 | Descripción de 20 caracteres se acepta | `app/domain.py` | `test_s01_accepts_valid_data` | validación sin error | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S01-04 | Más de 500 caracteres se rechaza | `app/domain.py` | `test_s01_rejects_description_outside_limits[501]` | sin alta | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S01-04 | Más de 500 caracteres se rechaza | `app/domain.py` | `test_s01_rejects_description_outside_limits[501]` | sin alta | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 | AC-S01-05 | Ubicación/categoría/impacto fuera del catálogo se rechaza | `app/domain.py` | `test_s01_rejects_invalid_catalog_or_boolean` | sin alta | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S01-06 | Usuario no solicitante no registra | `app/auth.py`, `app/incidents.py` | `test_s01_non_requester_cannot_register_and_database_stays_unchanged` | 0 incidencias y 0 eventos | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S01-06 | Usuario no solicitante no registra | `app/auth.py`, `app/incidents.py` | `test_s01_non_requester_cannot_register_and_database_stays_unchanged` | 0 incidencias y 0 eventos | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 | AC-S01-07 | Autor enviado por cliente no reemplaza usuario de sesión | `app/incidents.py` | `test_s01_ignores_forged_author_and_escapes_stored_text` | requester_id = usuario autenticado | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S01-08 | Texto parecido a HTML/script no se ejecuta | Jinja + `app/templates/incidents/index.html` | misma prueba anterior | texto persiste, salida escapada | Cumple en suite automatizada — 67 pruebas pasan en CI |
 
@@ -39,7 +41,7 @@ La lectura de cada fila es: requisito → criterio → comportamiento esperado �
 | Criterio | Comportamiento esperado | Código | Prueba / datos | Efecto esperado en SQLite | Estado |
 |---|---|---|---|---|---|
 | AC-S03-01 | Técnico asignado inicia ASIGNADA → EN_ATENCION | `start_attention` | `test_s03_assigned_technician_starts_attention` | estado EN_ATENCION + evento | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S03-02 | Otro técnico recibe 403 | autorización por assigned_technician_id | `test_s03_other_technician_cannot_start_attention` | conserva ASIGNADA | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S03-02 | Otro técnico recibe 403 | autorización por assigned_technician_id | `test_s03_other_technician_cannot_start_attention` | conserva ASIGNADA | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 | AC-S03-03 | Estado incompatible no permite iniciar | condición `state == ASIGNADA` | `test_s03_cannot_start_attention_from_incompatible_state` | sin evento nuevo | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S03-04 | Solución 20–800 desde EN_ATENCION pasa a PENDIENTE_VALIDACION | `propose_solution` | `test_s03_solution_moves_to_pending_validation_and_keeps_history` | solución + evento + nuevo estado | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S03-05 | Solución de 19 se rechaza | `validate_solution` | `test_s03_solution_limits[19-False]` | sin solución | Cumple en suite automatizada — 67 pruebas pasan en CI |
@@ -52,14 +54,14 @@ La lectura de cada fila es: requisito → criterio → comportamiento esperado �
 | Criterio | Comportamiento esperado | Código | Prueba / datos | Efecto esperado en SQLite | Estado |
 |---|---|---|---|---|---|
 | AC-S04-01 | Dueño confirma PENDIENTE_VALIDACION → CERRADA | `confirm_solution` | `test_s04_owner_confirms_pending_solution_and_closes` | closed_at UTC + evento cierre | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S04-02 | Otro solicitante no confirma | `get_owned_incident` | `test_s04_other_requester_cannot_confirm` | conserva PENDIENTE_VALIDACION | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S04-02 | Otro solicitante no confirma | `get_owned_incident` | `test_s04_other_requester_cannot_confirm` | conserva PENDIENTE_VALIDACION | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 | AC-S04-03 | Rechazo válido vuelve a EN_ATENCION y conserva técnico/solución | `reject_solution` | `test_s04_rejection_returns_to_attention_and_preserves_technician_and_solution` | evento de rechazo; misma asignación | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S04-04 | Motivo 9/301 se rechaza | `validate_reason` | `test_s04_reason_limits` + `test_s04_invalid_rejection_reason_has_no_effect` | sin evento de rechazo | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S04-05 | Exactamente 48 h permite reapertura | `reopen_incident` + reloj de servidor | `test_s04_reopen_exactly_48_hours_is_allowed` | EN_ATENCION + evento REABIERTA | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S04-06 | 48 h + 1 s se rechaza | misma función | `test_s04_reopen_after_48_hours_is_rejected_without_changes` | conserva CERRADA | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S04-07 | Coordinador no confirma ni reabre | autorización por rol | `test_s04_coordinator_cannot_confirm_or_reopen_for_requester` | 403; sin cambios | Cumple en suite automatizada — 67 pruebas pasan en CI |
 | AC-S04-08 | Cierres y soluciones previas se conservan en orden | tablas `solutions` y `events` | `test_flow_close_reopen_new_solution_and_close_again` + `test_ac_s04_08_and_s05_04_complete_history_in_chronological_order` | 2 cierres, 1 reapertura, 1 rechazo y 3 soluciones ordenadas sin pérdida de historia | Cumple en suite automatizada — 67 pruebas pasan en CI |
-| AC-S04-09 | Operaciones inválidas no dejan efectos parciales | transacciones + validación previa | `test_ac_s04_09_invalid_actions_have_no_partial_effects` (6 escenarios: estado, motivo y plazo) | instantáneas SQLite idénticas antes/después: incidencia, eventos y soluciones | Cumple en suite automatizada — 67 pruebas pasan en CI |
+| AC-S04-09 | Operaciones inválidas no dejan efectos parciales | transacciones + validación previa | `test_ac_s04_09_invalid_actions_have_no_partial_effects` (6 escenarios: estado, motivo y plazo) | instantáneas SQLite idénticas antes/después: incidencia, eventos y soluciones | Referencia localizada; cobertura de aserciones parcial (ver cotejo de 43 AC) |
 
 ## S05 / RF05 — Consultar e historizar
 
