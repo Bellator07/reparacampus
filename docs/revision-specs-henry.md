@@ -30,7 +30,7 @@ El antiguo `specs/README.md` mantenía «pendiente de revisión» y «No iniciad
 
 **Conclusión limitada:** la lectura no identificó contradicciones evidentes entre las reglas principales y sus funciones correspondientes. Sin embargo, no se ha acreditado una nueva verificación humana criterio por criterio ni la ausencia absoluta de defectos. En particular, las preguntas de `docs/preguntas-cliente.md` continúan como supuestos, no decisiones del cliente.
 
-**Revisión requerida para el cierre:** aunque los cinco criterios antes pendientes cuentan ahora con cobertura automatizada aprobada, falta comprobar personalmente las 43 correspondencias de la matriz y los resultados observados, registrar la decisión humana final desde la cuenta del responsable, completar el PDF y obtener revisión independiente del PR. La inspección y las nuevas pruebas preparadas con asistencia de IA deben seguir identificadas como tales.
+**Revisión requerida para el cierre:** Henry ya contrastó de forma guiada las 43 correspondencias en conversación, con asistencia de IA. Aún faltan la decisión formal registrada desde la cuenta del responsable, el PDF final y la revisión independiente de otro integrante. Las limitaciones de aserciones deben permanecer visibles.
 
 ## Inspección que debe realizar Henry
 
