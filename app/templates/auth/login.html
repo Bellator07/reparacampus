@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Iniciar sesión · ReparaCampus{% endblock %}
 {% block content %}
-<section class="card narrow">
-  <h1>Iniciar sesión</h1>
-  <p>Usa una de las cuentas ficticias preparadas para el examen.</p>
-  <form method="post">
-    <label>Usuario
-      <input name="username" required autocomplete="username">
-    </label>
-    <label>Contraseña
-      <input name="password" type="password" required autocomplete="current-password">
-    </label>
-    <button type="submit">Entrar</button>
-  </form>
+<section class="login-split" aria-label="Inicio de sesión en ReparaCampus">
+  <div class="login-photo" role="img" aria-label="Estudiantes universitarios trabajando en equipo"></div>
+  <div class="login-panel">
+    <div class="login-card">
+      <img class="login-logo" src="{{ url_for('static', filename='aula-logo.png') }}" alt="Universidad Simón Bolívar · Aula Extendida">
+      <div class="login-system">ReparaCampus · Gestión de incidencias</div>
+      <h1>Iniciar sesión</h1>
+      <p class="login-intro">Accede con una de las cuentas ficticias preparadas para el examen.</p>
+
+      <form method="post" class="login-form">
+        <label>Nombre de usuario
+          <input name="username" type="text" required autocomplete="username" placeholder="Introduce el usuario de prueba">
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" required autocomplete="current-password" placeholder="Introduce la contraseña">
+        </label>
+        <button type="submit" class="login-submit">Acceder</button>
+      </form>
+      <p class="login-note">Prototipo académico independiente. No introduzcas credenciales reales de la universidad.</p>
+    </div>
+  </div>
 </section>
 {% endblock %}
