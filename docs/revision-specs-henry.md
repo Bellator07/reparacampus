@@ -10,6 +10,28 @@
 
 El antiguo `specs/README.md` mantenía «pendiente de revisión» y «No iniciada» para S01–S05, a pesar de los PR integrados #6–#11. Esta propuesta actualiza el índice con enlaces, recuentos de AC, pruebas y cronología histórica. No altera las SPECS aprobadas v0.1.
 
+## Informe de inspección técnica asistida por IA (12/10/2026)
+
+**Naturaleza:** lectura estática de fuentes GitHub, sin ejecución de código nuevo en esta rama. No corresponde a una revisión realizada por Henry ni a una aprobación por pares.
+
+**Fuentes cotejadas:** las cinco SPECS v0.1; `app/domain.py`, `app/incidents.py`, `app/reporting.py`, `app/auth.py`; `tests/test_s01_unit.py`, `tests/test_s01_integration.py`, `tests/test_s02_priority_assignment.py`, `tests/test_s03_attention_solution.py`, `tests/test_s04_validation_reopen.py`, `tests/test_s05_query_history.py` y `tests/test_integration_flows.py`; matriz `docs/matriz-spec-codigo.md`.
+
+| SPEC | Hallazgo de lectura estática | Evidencia trazable | Verificación humana |
+|---|---|---|---|
+| S01 / RF01 | `validate_new_incident` restringe los tres códigos, catálogos y descripción 20–500 tras `strip`. `create` toma el autor de sesión y guarda incidencia+evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s01_unit.py`, `tests/test_s01_integration.py` | PENDIENTE |
+| S02 / RF02 | `calculate_priority` devuelve CRITICA/ALTA/NORMAL según riesgo e impacto. `assign` exige coordinador, estado REGISTRADA, técnico activo y no asignación previa; registra evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s02_priority_assignment.py` | PENDIENTE |
+| S03 / RF03 | `start_attention` y `propose_solution` exigen técnico asignado y estado compatible; `validate_solution` limita texto a 20–800. | `app/incidents.py`, `app/domain.py`, `tests/test_s03_attention_solution.py` | PENDIENTE |
+| S04 / RF04 | `get_owned_incident` comprueba propietario; confirmación, rechazo y reapertura aplican sus estados permitidos. La reapertura usa UTC del servidor y comprueba `elapsed <= timedelta(hours=48)`, preservando técnico y soluciones. | `app/incidents.py`, `tests/test_s04_validation_reopen.py`, `tests/test_integration_flows.py` | PENDIENTE |
+| S05 / RF05 | `list_incidents` filtra por identidad, rol, estado y prioridad. `_authorized_incident` bloquea consultas ajenas; `_dashboard` calcula conteos, críticas abiertas y porcentaje con caso cero. | `app/reporting.py`, `tests/test_s05_query_history.py` | PENDIENTE |
+
+**Cobertura documental:** cada una de las cinco SPECS tiene historia, entradas, precondiciones, reglas, errores, criterios Dado/Cuando/Entonces, tareas, pruebas esperadas y decisión de revisión previa. El recuento es S01=8, S02=8, S03=8, S04=9, S05=10: **43 criterios**, relacionados en `docs/matriz-spec-codigo.md` con rutas y nombres de pruebas.
+
+**Evidencia de pruebas histórica:** una captura proporcionada por el equipo muestra `56 passed in 20.25s` sobre su instalación local después de cambios de interfaz. También hay una ejecución de CI anterior con trabajo `pytest` exitoso: [GitHub Actions #38017818628](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38017818628). Estos resultados **no equivalen a una ejecución de pytest sobre esta rama de documentación**; los resultados del nuevo PR deben comprobarse por separado.
+
+**Conclusión limitada:** la lectura no identificó contradicciones evidentes entre las reglas principales y sus funciones correspondientes. Sin embargo, no se ha acreditado una nueva verificación humana criterio por criterio ni la ausencia absoluta de defectos. En particular, las preguntas de `docs/preguntas-cliente.md` continúan como supuestos, no decisiones del cliente.
+
+**Revisión requerida:** Henry debe verificar las 43 correspondencias con resultados observados, ejecutar o presenciar las pruebas de la revisión final, registrar diferencias reales y dejar su decisión como comentario o commit desde su cuenta. Otro integrante debe revisar el PR. No debe atribuirse a Henry esta inspección asistida.
+
 ## Inspección que debe realizar Henry
 
 Marcar únicamente después de verificar cada punto con el archivo SPEC, el código y las pruebas.
@@ -51,7 +73,8 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 | Evidencia | Valor verificado |
 |---|---|
 | Fecha/hora | PENDIENTE |
-| Rama | `docs/revision-specs-henry` |
+| Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado) |
+| Rama de la inspección asistida | `docs/auditoria-tecnica-specs` |
 | Commit SHA | PENDIENTE |
 | Pull Request | PENDIENTE |
 | Usuario GitHub responsable | PENDIENTE |
