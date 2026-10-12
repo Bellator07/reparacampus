@@ -10,6 +10,16 @@ La lectura de cada fila es: requisito → criterio → comportamiento esperado �
 
 **Informe de auditoría documental:** [Cotejo asistido de los 43 criterios](cotejo-asistido-matriz-43-ac.md). Se localizaron las referencias y pruebas para las 43 filas. Siete criterios muestran **observaciones sobre aserciones que no comprueban explícitamente algún subefecto**; por transparencia, sus estados se marcan como cobertura de aserciones parcial. Los 67 tests siguen aprobados, sin que esto equivalga a revisión humana firmada. Henry realizó un cotejo guiado de los 43 criterios con asistencia de IA el 12/10/2026 y aportó una ejecución local de 58 pruebas aprobadas. Esta evidencia no equivale a revisión independiente ni resuelve las siete observaciones de aserciones parciales. La rama del PR incluye 67 pruebas aprobadas en CI.
 
+## Cotejo guiado por Henry — 12/10/2026
+
+Durante una revisión interactiva con asistencia de IA, Henry cotejó las **43 filas de aceptación** de esta matriz (S01=8, S02=8, S03=8, S04=9, S05=10) con funciones y pruebas compartidas. Se revisaron los comportamientos principales, sin convertir esta lectura en una aprobación independiente ni en certificación de cobertura exhaustiva.
+
+**Evidencia local aportada:** Python 3.12 en Windows, copia temporal `%TEMP%\reparacampus_revision_henry`. Comando `py -3.12 -m pytest -q -p no:cacheprovider` → **58 passed in 21.84s, 0 fallidas**. Desglose de módulos: S01=14, S02=8, S03=13, S04=11, S05=9; la suite completa incorpora tres pruebas de integración adicionales. No se verificó equivalencia de commit SHA entre la copia temporal y el PR.
+
+**Evidencia CI separada:** la rama del PR #22 contiene nueve pruebas adicionales, con **67/67 aprobadas** en [GitHub Actions #38312929603](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38312929603). El HEAD anterior a esta actualización documental (`fc2f36861cb8e2cb8f91fe944cc64736584f0f3e`) también pasó [GitHub Actions #38313756028](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38313756028).
+
+**Estados de la matriz:** las siete filas identificadas como cobertura de aserciones parcial **no cambian de calificación** por este cotejo: AC-S01-01, AC-S01-02, AC-S01-04, AC-S01-06, AC-S03-02, AC-S04-02 y AC-S04-09. Recomendaciones complementarias: fallo forzado y rollback en S04-09; comprobación de cronología global por fecha en S05-04; conteos exactos del tablero en la copia local para S05-06 (ya reforzados en CI). Quedan pendientes la revisión independiente, la decisión formal y el PDF final.
+
 ## S01 / RF01 — Registrar
 
 | Criterio | Comportamiento esperado | Código | Prueba / datos | Efecto esperado en SQLite | Estado |
