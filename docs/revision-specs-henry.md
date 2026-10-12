@@ -73,16 +73,15 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 | Evidencia | Valor verificado |
 |---|---|
 | Fecha/hora | 12/10/2026. Hora exacta pendiente de registrar. |
-| Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado) |
-| Rama de la inspección asistida | `docs/auditoria-tecnica-specs` |
-| Commit SHA | PENDIENTE: registrar el SHA del nuevo commit después de guardar los cambios. |
-| Pull Request | PR #20 — `docs/auditoria-tecnica-specs` (borrador). |
-| Usuario GitHub responsable | PENDIENTE de confirmar la cuenta que realizará el commit. |
+| Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado). |
+| Rama de la inspección asistida | `docs/auditoria-tecnica-specs`. |
+| Commit SHA | `03a3a1d11311fb3f4785f0c90299be9ef3bafcaa` (commit publicado en PR #22; actualizar después del próximo commit). |
+| Pull Request | PR #22 — `docs/auditoria-tecnica-specs` hacia `main`. Abierto y pendiente de revisión independiente. |
+| Usuario GitHub responsable | `nagiberrioreales-design` (cuenta autora del PR #22). Identidad del responsable de la revisión humana pendiente de confirmar. |
 | Revisor de otro integrante | PENDIENTE de revisión independiente. |
-| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | `py -3.12 -m pytest -q` — 58 passed in 21.42s, 0 fallidas. Ejecutadas en Windows con Python 3.12 desde la copia temporal `reparacampus_pruebas`. |
-| Hallazgos y correcciones | Se ampliaron pruebas de S03 y S04 para verificar persistencia e historial. Pendiente reforzar S03-07, orden cronológico de S04-08 y S05-04, casos inválidos de S04-09 y conteos detallados de S05-06. |
-| Decisión humana final, con justificación | PENDIENTE: completar al finalizar las verificaciones restantes y obtener revisión independiente. |
-
+| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | `py -3.12 -m pytest -q` — 58 passed in 21.42s, 0 fallidas. Ejecutadas en Windows con Python 3.12 desde `reparacampus_pruebas`. GitHub Actions #38286451808: trabajo `pytest` exitoso en PR #22. |
+| Hallazgos y correcciones | Se ampliaron las pruebas de S03 y S04 para verificar persistencia, permisos e historial. Pendiente reforzar S03-07, orden cronológico de S04-08 y S05-04, casos inválidos de S04-09 y conteos detallados de S05-06. |
+| Decisión humana final, con justificación | PENDIENTE: completar después de las verificaciones restantes y la revisión independiente. |
 ## Ejecución general de pruebas — 12/10/2026
 
 Responsable: Henry Berrio.
@@ -107,5 +106,10 @@ historial en S03-07, orden cronológico en S04-08 y S05-04,
 cobertura de operaciones inválidas en S04-09 y conteos
 detallados del tablero en S05-06.
 
-Los cambios permanecen pendientes de commit y de
-revisión independiente del Pull Request #20.
+Los cambios de la auditoría y las pruebas ampliadas de S03 y S04 fueron publicados en el Pull Request #22.
+
+GitHub Actions #38286451808 finalizó correctamente con el trabajo `pytest` aprobado.
+
+La revisión independiente de otro integrante y la decisión humana final permanecen pendientes.
+
+**Nota de integridad académica:** este registro fue preparado con asistencia de IA para la inspección y documentación. Las pruebas ejecutadas y las verificaciones realizadas se documentan por separado. La revisión independiente y la aprobación final permanecen pendientes.
