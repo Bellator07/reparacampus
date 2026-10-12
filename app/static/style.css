@@ -203,3 +203,97 @@ th { background: #eaf0f6; }
   font-size: 12px;
   font-style: italic;
 }
+
+/* RF05 - Tablero del coordinador */
+
+.coordinator-dashboard {
+  margin: 20px 0;
+}
+
+.coordinator-dashboard h2 {
+  margin-top: 0;
+  color: #1b355c;
+}
+
+.coordinator-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.coordinator-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #f1f5ff;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  min-width: 0;
+}
+
+.coordinator-stat span {
+  font-size: 14px;
+  color: #52627a;
+}
+
+.coordinator-stat strong {
+  font-size: 28px;
+  color: #1748a6;
+}
+
+.coordinator-breakdown {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.coordinator-breakdown > div {
+  background: #fff;
+  border: 1px solid #dce3ed;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.coordinator-breakdown h3 {
+  margin-top: 0;
+  color: #1b355c;
+}
+
+/* Adaptación a tablets */
+@media (max-width: 1000px) {
+  .coordinator-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Adaptación a celulares */
+@media (max-width: 600px) {
+  .coordinator-stats,
+  .coordinator-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .coordinator-stat {
+    padding: 15px;
+  }
+}
+
+/* RF05 - Espaciado de botones de consulta */
+
+.filter-grid .filter-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.filter-grid .filter-actions button,
+.filter-grid .filter-actions .button {
+  min-width: 100px;
+  padding: 11px 20px;
+  font-weight: 600;
+  border-radius: 7px;
+}
