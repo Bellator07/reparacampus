@@ -69,6 +69,7 @@ Incluir:
 - secuencia de rechazo;
 - decisión Flask + SQLite + Jinja + pytest;
 - alternativas consideradas y por qué no se usaron.
+- interfaz institucional incorporada mediante el PR #21.
 
 Fuentes:
 - `docs/arquitectura.md`
@@ -101,17 +102,20 @@ También resumir la implementación de RF01–RF05 y enlazar PR #7 a #11.
 ## 7. Validación
 
 Incluir:
-- matriz RF → SPEC → AC → código → prueba;
-- comando `pytest -q`;
-- resultado final: 56 pruebas aprobadas, 0 fallidas;
-- los 3 recorridos de integración;
-- límites 19/20, 800/801, 48 h y 48 h + 1 s;
-- regresión completa de S01–S05.
+- Matriz RF → SPEC → AC → código → prueba;
+- Comando `pytest -q`;
+- Última ejecución local registrada: 56 pruebas aprobadas, 0 fallidas, en el SHA e566bf9ee0275ace7e3f6e4550dd69b7dfeb61c9;
+- Resultado de GitHub Actions para la versión definitiva, una vez verificado;
+- Los tres recorridos de integración;
+- Límites 19/20, 800/801, 48 h y 48 h + 1 s;
+- Regresión completa de S01–S05 correspondiente a la versión entregada;
 
 Fuentes:
 - `docs/matriz-spec-codigo.md`
 - `docs/resultados-pruebas.md`
-- GitHub Actions del PR #16.
+- Historial de GitHub Actions correspondiente a la versión que finalmente se entregue.
+
+**Importante:** las 56 pruebas aprobadas corresponden a la ejecución local registrada. No presentar ese resultado como una ejecución de GitHub Actions.
 
 ## 8. Riesgos
 
@@ -129,8 +133,8 @@ Fuente: `docs/riesgos.md`.
 
 Debe quedar:
 - URL del repositorio;
-- tag final `release-examen` — **se crea después del merge final**;
-- SHA final — **se obtiene después del merge final**;
+- Tag release-examen existente y SHA al que apunta, después de verificarlo;
+- SHA del código definitivo probado, una vez integrados los cambios pendientes;
 - instalación;
 - arranque;
 - seed;
@@ -151,6 +155,7 @@ Estado actual:
 - Leyter López: verificable desde `leiter11447-crypto`.
 - Milton Ramírez: verificable desde `Bellator07`.
 - Santiago Hernández: verificable desde `snt-10`.
+- Contrastar los aportes con el archivo de contribuciones y las evidencias reales.
 
 Fuente: `docs/contribuciones.md`.
 
@@ -162,19 +167,14 @@ Cierre final del equipo:
 
 ## 11. Referencias
 
-Usar las referencias oficiales ya registradas en:
-`docs/referencias.md`
-
-Agregar como fuente principal:
-- enunciado ReparaCampus entregado por el docente.
+Usar las referencias oficiales registradas en `docs/referencias.md`, incluyendo el enunciado de ReparaCampus entregado por el docente.
 
 ## Pendientes antes de exportar el PDF
 
-1. Crear y dejar visible el GitHub Project con los cuatro estados pedidos por el examen.
-2. Comprobar el último CI del PR #16.
-3. Hacer merge del PR #16.
-4. Crear tag `release-examen`.
-5. Registrar SHA final.
-6. Generar Word y PDF definitivos.
-7. Abrir el PDF final y revisar índice, enlaces, nombres, diagramas y legibilidad.
-8. Cada integrante sube el mismo PDF al aula.
+1. Confirmar el estado del GitHub Project y sus cuatro estados requeridos.
+2. Verificar GitHub Actions para la versión que se entregará.
+3. Confirmar si quedan integraciones pendientes de otros integrantes.
+4. Obtener el SHA definitivo y verificar a qué commit apunta `release-examen`, sin modificarlo sin acuerdo explícito.
+5. Generar el Word y el PDF definitivos con evidencias de esa versión.
+6. Abrir el PDF y comprobar índice, enlaces, nombres, diagramas, tablas y legibilidad.
+7. Coordinar que todos los integrantes entreguen el mismo PDF.

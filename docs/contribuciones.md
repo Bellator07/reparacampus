@@ -17,10 +17,12 @@ Las evidencias personales de Juan, Leyter, Milton y Santiago ya están registrad
 
 ## Aceptación del equipo
 
-La aceptación final se registrará después de:
+La aceptación final de la entrega se registrará cuando se hayan comprobado las siguientes condiciones:
 
-1. CI final en verde;
-2. revisión del PR de cierre;
-3. los Issues #12, #13, #14 y #15 están completados;
-4. creación del tag `release-examen`;
-5. comprobación del PDF y de los enlaces.
+1. GitHub Actions ejecutado sobre la versión definitiva y con resultado documentado.
+2. Revisión del PR de cierre y resolución de los comentarios que correspondan.
+3. Estado de los Issues #12, #13, #14 y #15 comprobado en GitHub.
+4. Referencia del tag `release-examen` verificada y versión final acordada por el equipo, sin modificar el tag sin autorización.
+5. PDF definitivo revisado y enlaces comprobados.
+
+Las evidencias individuales descritas en este documento no sustituyen la comprobación de estos requisitos de cierre.
