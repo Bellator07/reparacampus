@@ -12,17 +12,17 @@ El antiguo `specs/README.md` mantenía «pendiente de revisión» y «No iniciad
 
 ## Informe de inspección técnica asistida por IA (12/10/2026)
 
-**Naturaleza:** lectura estática de fuentes GitHub, sin ejecución de código nuevo en esta rama. No corresponde a una revisión realizada por Henry ni a una aprobación por pares.
+**Naturaleza:** la inspección inicial fue realizada con asistencia de IA mediante lectura estática de fuentes GitHub. Posteriormente, Henry ejecutó las pruebas automatizadas en una copia temporal del repositorio, obteniendo 58 pruebas aprobadas y 0 fallidas el 12/10/2026. Esta evidencia no equivale a una aprobación independiente ni garantiza la ausencia de defectos. La revisión por otro integrante continúa pendiente.
 
 **Fuentes cotejadas:** las cinco SPECS v0.1; `app/domain.py`, `app/incidents.py`, `app/reporting.py`, `app/auth.py`; `tests/test_s01_unit.py`, `tests/test_s01_integration.py`, `tests/test_s02_priority_assignment.py`, `tests/test_s03_attention_solution.py`, `tests/test_s04_validation_reopen.py`, `tests/test_s05_query_history.py` y `tests/test_integration_flows.py`; matriz `docs/matriz-spec-codigo.md`.
 
 | SPEC | Hallazgo de lectura estática | Evidencia trazable | Verificación humana |
 |---|---|---|---|
-| S01 / RF01 | `validate_new_incident` restringe los tres códigos, catálogos y descripción 20–500 tras `strip`. `create` toma el autor de sesión y guarda incidencia+evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s01_unit.py`, `tests/test_s01_integration.py` | PENDIENTE |
-| S02 / RF02 | `calculate_priority` devuelve CRITICA/ALTA/NORMAL según riesgo e impacto. `assign` exige coordinador, estado REGISTRADA, técnico activo y no asignación previa; registra evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s02_priority_assignment.py` | PENDIENTE |
-| S03 / RF03 | `start_attention` y `propose_solution` exigen técnico asignado y estado compatible; `validate_solution` limita texto a 20–800. | `app/incidents.py`, `app/domain.py`, `tests/test_s03_attention_solution.py` | PENDIENTE |
-| S04 / RF04 | `get_owned_incident` comprueba propietario; confirmación, rechazo y reapertura aplican sus estados permitidos. La reapertura usa UTC del servidor y comprueba `elapsed <= timedelta(hours=48)`, preservando técnico y soluciones. | `app/incidents.py`, `tests/test_s04_validation_reopen.py`, `tests/test_integration_flows.py` | PENDIENTE |
-| S05 / RF05 | `list_incidents` filtra por identidad, rol, estado y prioridad. `_authorized_incident` bloquea consultas ajenas; `_dashboard` calcula conteos, críticas abiertas y porcentaje con caso cero. | `app/reporting.py`, `tests/test_s05_query_history.py` | PENDIENTE |
+| S01 / RF01 | `validate_new_incident` restringe los tres códigos, catálogos y descripción 20–500 tras `strip`. `create` toma el autor de sesión y guarda incidencia+evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s01_unit.py`, `tests/test_s01_integration.py` | REVISIÓN PARCIAL (12/10/2026): Henry revisó AC-S01-01 a AC-S01-08. Resultado: 14 pruebas S01 aprobadas, 0 fallidas, ejecutadas en copia temporal. Acceso sin sesión y fecha UTC verificados mediante revisión del código en `app/auth.py` y `app/incidents.py`. SHA de la versión probada: `62fb7d1c0557ff6f0fd245bbef181ee4e3c7c921`.|
+| S02 / RF02 | `calculate_priority` devuelve CRITICA/ALTA/NORMAL según riesgo e impacto. `assign` exige coordinador, estado REGISTRADA, técnico activo y no asignación previa; registra evento en transacción. | `app/domain.py`, `app/incidents.py`, `tests/test_s02_priority_assignment.py` | REVISADO (12/10/2026): Henry comprobó AC-S02-01 a AC-S02-08. Resultado: 8 pruebas aprobadas, 0 fallidas, ejecutadas en copia temporal. Se verificaron prioridades, asignación, permisos, técnico inactivo, prevención de reasignación e historial. SHA probado: 62fb7d1c0557ff6f0fd245bbef181ee4e3c7c921. |
+| S03 / RF03 | `start_attention` y `propose_solution` exigen técnico asignado y estado compatible; `validate_solution` limita el texto a 20–800 caracteres. | `app/incidents.py`, `app/domain.py`, `tests/test_s03_attention_solution.py` | REVISIÓN PARCIAL (12/10/2026): 13 passed in 4.91s. Verificados los 8 AC mediante pruebas e inspección del código. Pendiente comprobar explícitamente la ausencia de eventos en AC-S03-07. Pruebas ampliadas pendientes de commit. |
+| S04 / RF04 | `get_owned_incident` comprueba el propietario; confirmación, rechazo y reapertura aplican los estados permitidos. La reapertura utiliza UTC y un límite de 48 horas, conservando técnico y soluciones. | `app/incidents.py`, `tests/test_s04_validation_reopen.py`, `tests/test_integration_flows.py` | REVISIÓN PARCIAL (12/10/2026): 11 passed in 3.85s. Prueba adicional de flujo completo aprobada (1 passed in 1.14s). Contrastados los 9 AC. Pendiente verificar explícitamente el orden cronológico de AC-S04-08 y ampliar la cobertura de AC-S04-09. Prueba ampliada localmente, pendiente de commit. |
+| S05 / RF05 | `list_incidents` filtra por usuario, rol, estado y prioridad. La consulta del historial aplica controles de acceso y escapado HTML. El tablero calcula conteos y porcentaje de cierre, incluido el caso sin incidencias. | `app/reporting.py`, `tests/test_s05_query_history.py` | REVISIÓN PARCIAL (12/10/2026): 9 pruebas aprobadas (9 passed in 5.26s). Contrastados los 10 AC mediante pruebas e inspección. Pendiente reforzar la comprobación del orden cronológico del historial y los conteos detallados del tablero. |
 
 **Cobertura documental:** cada una de las cinco SPECS tiene historia, entradas, precondiciones, reglas, errores, criterios Dado/Cuando/Entonces, tareas, pruebas esperadas y decisión de revisión previa. El recuento es S01=8, S02=8, S03=8, S04=9, S05=10: **43 criterios**, relacionados en `docs/matriz-spec-codigo.md` con rutas y nombres de pruebas.
 
@@ -38,11 +38,11 @@ Marcar únicamente después de verificar cada punto con el archivo SPEC, el cód
 
 | SPEC / RF | AC | Qué revisar | Resultado / evidencia |
 |---|---:|---|---|
-| [S01 / RF01](../specs/S01-registro.md) | 8 | Catálogos permitidos; longitudes 19, 20, 500 y 501; rol; autor de sesión; incidencia y evento atómicos; texto escapado | PENDIENTE |
-| [S02 / RF02](../specs/S02-priorizacion-asignacion.md) | 8 | Riesgo y prioridad; técnico activo; solo coordinador; REGISTRADA → ASIGNADA; no reasignación | PENDIENTE |
-| [S03 / RF03](../specs/S03-atencion-solucion.md) | 8 | Solo técnico asignado; estados válidos; solución 19, 20, 800, 801; historial | PENDIENTE |
-| [S04 / RF04](../specs/S04-validacion-reapertura.md) | 9 | Propiedad; motivo 9, 10, 300, 301; 48 h exactas y un instante después; conservación de técnico/soluciones | PENDIENTE |
-| [S05 / RF05](../specs/S05-consulta-historial.md) | 10 | Permisos, filtros, historial, tablero; porcentaje con cero registros; escapado y acceso ajeno 403 | PENDIENTE |
+| [S01 / RF01](../specs/S01-registro.md) | 8 | Catálogos permitidos; longitudes 19, 20, 500 y 501; rol; autor de sesión; incidencia y evento atómicos; texto escapado | REVISIÓN PARCIAL (12/10/2026): 14 pruebas aprobadas, 0 fallidas. Revisados AC-S01-01 a AC-S01-08. Acceso sin sesión y fecha UTC comprobados mediante inspección de código. SHA base: 62fb7d1c0557ff6f0fd245bbef181ee4e3c7c921. |
+| [S02 / RF02](../specs/S02-priorizacion-asignacion.md) | 8 | Riesgo y prioridad; técnico activo; solo coordinador; REGISTRADA → ASIGNADA; no reasignación | REVISADO (12/10/2026): 8 criterios comprobados mediante revisión de código y 8 pruebas aprobadas en copia temporal. SHA: 62fb7d1c0557ff6f0fd245bbef181ee4e3c7c921. |
+| [S03 / RF03](../specs/S03-atencion-solucion.md) | 8 | Solo técnico asignado; estados válidos; solución 19, 20, 800, 801; historial | REVISIÓN PARCIAL (12/10/2026): 13 pruebas aprobadas en tests/test_s03_attention_solution.py (13 passed in 4.91s). Contrastados los 8 AC, incluidos permisos, estados, longitudes, persistencia, historial y escapado HTML. Pendiente comprobar explícitamente que AC-S03-07 no genere eventos. Pruebas ampliadas localmente, pendientes de commit. |
+| [S04 / RF04](../specs/S04-validacion-reapertura.md) | 9 | Propiedad; motivo 9, 10, 300, 301; 48 h exactas y un segundo después; conservación de técnico y soluciones; historial | REVISIÓN PARCIAL (12/10/2026): 11 pruebas aprobadas en test_s04_validation_reopen.py (11 passed in 3.85s). Flujo completo de cierre, reapertura y segundo cierre aprobado (1 passed in 1.14s). Verificados los 9 AC mediante pruebas e inspección. Pendiente comprobar explícitamente el orden cronológico de AC-S04-08 y ampliar la cobertura de AC-S04-09. Cambios locales pendientes de commit. |
+| [S05 / RF05](../specs/S05-consulta-historial.md) | 10 | Permisos por rol; filtros de estado y prioridad; historial, soluciones y eventos; bloqueo de edición; conteos del tablero; porcentajes de cierre; escapado HTML; acceso ajeno HTTP 403 | REVISIÓN PARCIAL (12/10/2026): 9 pruebas aprobadas en tests/test_s05_query_history.py (9 passed in 5.26s). Revisados los 10 AC con evidencia automatizada e inspección. Pendiente reforzar el orden cronológico del historial (AC-S05-04) y los conteos detallados del tablero (AC-S05-06). |
 
 ## Cadena de trazabilidad
 
@@ -72,15 +72,40 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 
 | Evidencia | Valor verificado |
 |---|---|
-| Fecha/hora | PENDIENTE |
+| Fecha/hora | 12/10/2026. Hora exacta pendiente de registrar. |
 | Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado) |
 | Rama de la inspección asistida | `docs/auditoria-tecnica-specs` |
-| Commit SHA | PENDIENTE |
-| Pull Request | PENDIENTE |
-| Usuario GitHub responsable | PENDIENTE |
-| Revisor de otro integrante | PENDIENTE |
-| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | PENDIENTE |
-| Hallazgos y correcciones | PENDIENTE |
-| Decisión humana final, con justificación | PENDIENTE |
+| Commit SHA | PENDIENTE: registrar el SHA del nuevo commit después de guardar los cambios. |
+| Pull Request | PR #20 — `docs/auditoria-tecnica-specs` (borrador). |
+| Usuario GitHub responsable | PENDIENTE de confirmar la cuenta que realizará el commit. |
+| Revisor de otro integrante | PENDIENTE de revisión independiente. |
+| Pruebas (comando, n.º aprobadas, fallidas, evidencia) | `py -3.12 -m pytest -q` — 58 passed in 21.42s, 0 fallidas. Ejecutadas en Windows con Python 3.12 desde la copia temporal `reparacampus_pruebas`. |
+| Hallazgos y correcciones | Se ampliaron pruebas de S03 y S04 para verificar persistencia e historial. Pendiente reforzar S03-07, orden cronológico de S04-08 y S05-04, casos inválidos de S04-09 y conteos detallados de S05-06. |
+| Decisión humana final, con justificación | PENDIENTE: completar al finalizar las verificaciones restantes y obtener revisión independiente. |
 
-**Nota de integridad académica:** este registro ha sido preparado con ayuda de IA como plantilla y corrección documental. No equivale a una auditoría personal realizada por Henry, ni se debe afirmar que Henry escribió el cambio o aprobó revisiones que no ejecutó.
+## Ejecución general de pruebas — 12/10/2026
+
+Responsable: Henry Berrio.
+
+Comando ejecutado:
+`py -3.12 -m pytest -q`
+
+Resultado:
+**58 passed in 21.42s — 0 pruebas fallidas.**
+
+Entorno: Python 3.12, Windows, copia temporal
+`reparacampus_pruebas`.
+
+Se ejecutaron las pruebas de S01, S02, S03, S04, S05
+y los flujos de integración.
+
+Se ampliaron las pruebas de S03 y S04 para reforzar
+las verificaciones de persistencia e historial.
+
+Observaciones pendientes: comprobación adicional del
+historial en S03-07, orden cronológico en S04-08 y S05-04,
+cobertura de operaciones inválidas en S04-09 y conteos
+detallados del tablero en S05-06.
+
+Los cambios permanecen pendientes de commit y de
+revisión independiente del Pull Request #20.

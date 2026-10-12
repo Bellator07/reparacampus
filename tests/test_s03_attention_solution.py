@@ -133,32 +133,43 @@ def test_s03_solution_moves_to_pending_validation_and_keeps_history(app, client)
         assert event["from_state"] == "EN_ATENCION"
         assert event["to_state"] == "PENDIENTE_VALIDACION"
 
-
+@pytest.mark.parametrize("solution", ["Muy corta", "x" * 19, "x" * 801])
 @pytest.mark.integration
-def test_s03_invalid_solution_keeps_state_and_does_not_create_solution(app, client):
+def test_s03_invalid_solution_keeps_state_and_does_not_create_solution(app, client, solution):
     incident_id = create_assigned_incident(app, state="EN_ATENCION")
 
     login(client, username="tecnico1")
     response = client.post(
         f"/incidents/{incident_id}/solution",
-        data={"solution": "Muy corta"},
+        data={"solution": solution},
     )
 
     assert response.status_code == 302
 
     with app.app_context():
         db = get_db()
+
         incident = db.execute(
-            "SELECT * FROM incidents WHERE id = ?", (incident_id,)
+            "SELECT * FROM incidents WHERE id = ?",
+            (incident_id,),
         ).fetchone()
+
         count = db.execute(
             "SELECT COUNT(*) FROM solutions WHERE incident_id = ?",
             (incident_id,),
         ).fetchone()[0]
 
+        solution_events = db.execute(
+            """
+            SELECT COUNT(*) FROM events
+            WHERE incident_id = ? AND action = 'SOLUCION_PROPUESTA'
+            """,
+            (incident_id,),
+        ).fetchone()[0]
+
         assert incident["state"] == "EN_ATENCION"
         assert count == 0
-
+        assert solution_events == 0
 
 @pytest.mark.integration
 def test_s03_cannot_start_attention_from_incompatible_state(app, client):
