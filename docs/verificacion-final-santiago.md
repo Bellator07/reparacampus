@@ -4,48 +4,69 @@
 
 - **Proyecto:** ReparaCampus
 - **Responsable:** Santiago Hernández
-- **Rama de trabajo:** `docs/cierre-documentacion-santiago`
-- **Rama base:** `main`
+- **Rama verificada:** `main`
 - **Fecha de verificación:** 12 de octubre de 2026
-- **Commit verificado:** `7cea070934122bdc52473abdfab7d4ce56d456bc`
+- **SHA verificado:** `f0894d5511c0562aac5fd813c95f50c182aca73a`
+- **Método:** ejecución local de la suite automatizada con pytest.
 
 ## 2. Entorno de pruebas
 
 - **Python:** 3.12
-- **Gestor de pruebas:** pytest 8.4.2
-- **Dependencias:** instaladas mediante `requirements.txt`
+- **Gestor de pruebas:** pytest
 - **Entorno virtual:** `.venv`
+- **Dependencias:** instaladas mediante `requirements.txt`.
 
 ## 3. Ejecución de pruebas
 
 Se ejecutó el siguiente comando desde la raíz del repositorio:
 
 ```bash
-.venv\Scripts\python.exe -m pytest -q
+.\.venv\Scripts\python.exe -m pytest -q
 ```
 
 **Resultado obtenido:**
 
 ```text
-56 passed in 42.82s
+56 passed in 53.37s
 ```
 
-Las 56 pruebas ejecutadas finalizaron correctamente, sin fallos reportados por pytest.
+La suite automatizada finalizó con 56 pruebas aprobadas y sin fallos reportados por pytest. Después de la ejecución se comprobó que la rama activa era `main` y que el SHA correspondía a `f0894d5511c0562aac5fd813c95f50c182aca73a`.
+
+Este resultado corresponde a una ejecución local. No debe presentarse como resultado de GitHub Actions.
 
 ## 4. Estado del repositorio
 
-La verificación se ejecutó en la rama `docs/cierre-documentacion-santiago`, sobre el commit identificado en la sección 1. Después de crear este documento, Git lo detectó como un archivo nuevo sin seguimiento, pendiente de incorporarse mediante un commit.
+En la comprobación posterior a la integración documental, `git status --short` no mostró cambios pendientes.
 
-## 5. Alcance de la verificación
+La referencia remota `origin/main` y el `HEAD` local coincidían en el SHA verificado indicado en la sección 1.
 
-Esta comprobación confirma el resultado de la suite automatizada disponible en el repositorio para el commit identificado. No constituye por sí sola una validación de todos los requisitos funcionales, de seguridad, de despliegue o de aceptación del sistema.
+## 5. Cambios documentales relacionados
 
-## 6. Evidencias
+- **PR #23:** incorporación del documento inicial de verificación final.
+- **PR #24:** actualización de los resultados de pruebas documentados.
+- **PR #26:** actualización de los criterios de cierre y del guion del PDF final.
 
-- Salida de pytest con las 56 pruebas aprobadas.
-- Identificador del commit verificado.
-- Salida de `git status`.
+Enlaces:
+
+- https://github.com/nagiberrioreales-design/reparacampus/pull/23
+- https://github.com/nagiberrioreales-design/reparacampus/pull/24
+- https://github.com/nagiberrioreales-design/reparacampus/pull/26
+
+## 6. Alcance y observaciones pendientes
+
+Esta verificación acredita el resultado de la suite automatizada para el SHA indicado. Por sí sola, no certifica todos los requisitos funcionales, la seguridad, el despliegue ni la aceptación final del sistema.
+
+Antes de cerrar la entrega, queda pendiente:
+
+1. Revisar el PDF completo y comprobar su correspondencia con la versión definitiva de `main`.
+2. Verificar la legibilidad de los cuatro diagramas UML, las tablas, las capturas y el índice.
+3. Comprobar los enlaces a PR, Issues, referencias y GitHub Actions.
+4. Verificar el resultado de GitHub Actions correspondiente a la versión que se entregará.
+5. Coordinar con el equipo el SHA y el tag definitivos, sin mover ni recrear `release-examen` sin acuerdo explícito.
+6. Incorporar capturas u otras evidencias adicionales si las exige la entrega.
 
 ## 7. Conclusión
 
-La suite automatizada se ejecutó satisfactoriamente sobre el commit identificado. El resultado obtenido fue de 56 pruebas aprobadas en 42,82 segundos. La documentación y las demás evidencias de cierre deben revisarse antes de presentar la entrega definitiva.
+En la versión identificada por el SHA `f0894d5511c0562aac5fd813c95f50c182aca73a`, la suite automatizada se ejecutó satisfactoriamente con 56 pruebas aprobadas en 53.37 segundos.
+
+La validación del PDF y las comprobaciones finales de coordinación, CI y etiquetado quedan pendientes hasta contar con sus respectivas evidencias.
