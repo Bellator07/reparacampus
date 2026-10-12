@@ -315,10 +315,8 @@ def test_s04_reopen_after_48_hours_is_rejected_without_changes(app, client):
 def test_s04_coordinator_cannot_confirm_or_reopen_for_requester(app, client):
     pending_id, _ = create_pending_incident(app)
     now = datetime(2026, 10, 9, 12, 0, tzinfo=timezone.utc)
-    closed_id, _ = create_closed_incident(
-        app,
-        closed_at=(now - timedelta(hours=2)).isoformat(timespec="seconds"),
-    )
+    closed_at = (now - timedelta(hours=2)).isoformat(timespec="seconds")
+    closed_id, _ = create_closed_incident(app, closed_at=closed_at)
     app.config["NOW_PROVIDER"] = lambda: now
 
     login(client, username="coordinador")
@@ -331,3 +329,27 @@ def test_s04_coordinator_cannot_confirm_or_reopen_for_requester(app, client):
 
     assert confirm.status_code == 403
     assert reopen.status_code == 403
+
+    with app.app_context():
+        db = get_db()
+
+        pending = db.execute(
+            "SELECT * FROM incidents WHERE id = ?", (pending_id,)
+        ).fetchone()
+        closed = db.execute(
+            "SELECT * FROM incidents WHERE id = ?", (closed_id,)
+        ).fetchone()
+
+        unauthorized_events = db.execute(
+            """
+            SELECT COUNT(*) FROM events
+            WHERE (incident_id = ? AND action = 'CIERRE_CONFIRMADO')
+               OR (incident_id = ? AND action = 'REABIERTA')
+            """,
+            (pending_id, closed_id),
+        ).fetchone()[0]
+
+        assert pending["state"] == "PENDIENTE_VALIDACION"
+        assert closed["state"] == "CERRADA"
+        assert closed["closed_at"] == closed_at
+        assert unauthorized_events == 0
