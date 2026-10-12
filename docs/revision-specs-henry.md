@@ -120,3 +120,12 @@ Se incorporó `tests/test_auditoria_henry_criteria.py`, con 9 casos de prueba ad
 **Resultado de CI confirmado:** `67 passed in 25.88s`, 0 pruebas fallidas en [GitHub Actions #38312929603](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38312929603), correspondiente al commit `a78b5a741c444dc2139e9ef38812f3b334c00091`. El commit documental posterior `d0cf9361d067de5edecf5e09dc982114a5a17d3f` también completó correctamente el trabajo `pytest` en [GitHub Actions #38313123114](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38313123114).
 
 **Alcance:** cobertura automatizada reforzada y evidencias de trazabilidad publicadas en `docs/matriz-spec-codigo.md`. Esto no significa que Henry haya ejecutado personalmente esta nueva batería ni constituye su aprobación humana. La casilla de comprobación exhaustiva de las 43 correspondencias permanece sin marcar hasta que el responsable realice y documente la revisión.
+
+
+## Acta de cotejo guiado — 12/10/2026
+
+Henry Berrio aportó código, pruebas y capturas durante una revisión interactiva asistida por IA de **43/43 criterios**: S01 (8), S02 (8), S03 (8), S04 (9) y S05 (10). Se cotejaron los comportamientos principales con la matriz y el código. No es una aprobación independiente ni acredita ausencia de defectos.
+
+**Ejecución local observada:** Windows, Python 3.12, copia temporal `%TEMP%\reparacampus_revision_henry` (distinta de la carpeta original abierta en VS Code). Se ejecutó `py -3.12 -m pytest -q -p no:cacheprovider` y se obtuvo **58 passed in 21.84s, 0 fallidas**. Los módulos pasaron S01=14, S02=8, S03=13, S04=11 y S05=9; las otras tres pruebas corresponden a los recorridos de integración. No se comprobó igualdad de SHA entre la copia temporal y la rama del PR.
+
+**Evidencia separada de CI:** PR #22, rama `docs/auditoria-tecnica-specs`, incluye nueve casos complementarios en `tests/test_auditoria_henry_criteria.py`. La suite ampliada aprobó **67/67** en GitHub Actions [#38312929603](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38312929603). El commit `fc2f36861cb8e2cb8f91fe944cc64736584f0f3e` tuvo también un flujo exitoso [#38313756028](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38313756028). Henry no aportó evidencia de haber ejecutado localmente las nueve pruebas adicionales.
