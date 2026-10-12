@@ -8,7 +8,7 @@
 
 La lectura de cada fila es: requisito → criterio → comportamiento esperado → archivo que lo implementa → prueba que lo comprueba.
 
-**Informe de auditoría documental:** [Cotejo asistido de los 43 criterios](cotejo-asistido-matriz-43-ac.md). Se localizaron las referencias y pruebas para las 43 filas. Siete criterios muestran **observaciones sobre aserciones que no comprueban explícitamente algún subefecto**; por transparencia, sus estados se marcan como cobertura de aserciones parcial. Los 67 tests siguen aprobados, sin que esto equivalga a revisión humana firmada. La validación personal de Henry permanece pendiente.
+**Informe de auditoría documental:** [Cotejo asistido de los 43 criterios](cotejo-asistido-matriz-43-ac.md). Se localizaron las referencias y pruebas para las 43 filas. Siete criterios muestran **observaciones sobre aserciones que no comprueban explícitamente algún subefecto**; por transparencia, sus estados se marcan como cobertura de aserciones parcial. Los 67 tests siguen aprobados, sin que esto equivalga a revisión humana firmada. Henry realizó un cotejo guiado de los 43 criterios con asistencia de IA el 12/10/2026 y aportó una ejecución local de 58 pruebas aprobadas. Esta evidencia no equivale a revisión independiente ni resuelve las siete observaciones de aserciones parciales. La rama del PR incluye 67 pruebas aprobadas en CI.
 
 ## S01 / RF01 — Registrar
 
