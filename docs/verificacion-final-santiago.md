@@ -6,7 +6,7 @@
 - **Responsable:** Santiago Hernández
 - **Rama verificada:** `main`
 - **Fecha de verificación:** 12 de octubre de 2026
-- **SHA verificado:** `f0894d5511c0562aac5fd813c95f50c182aca73a`
+- **SHA verificado:** `1176f261a976ac8067a7fe4dc543a84a5ba5470e`
 - **Método:** ejecución local de la suite automatizada con pytest.
 
 ## 2. Entorno de pruebas
@@ -18,7 +18,7 @@
 
 ## 3. Ejecución de pruebas
 
-Se ejecutó el siguiente comando desde la raíz del repositorio:
+Después de actualizar la rama `main` con los cambios integrados del repositorio remoto, se ejecutó el siguiente comando desde la raíz del proyecto:
 
 ```bash
 .\.venv\Scripts\python.exe -m pytest -q
@@ -27,38 +27,48 @@ Se ejecutó el siguiente comando desde la raíz del repositorio:
 **Resultado obtenido:**
 
 ```text
-56 passed in 53.37s
+67 passed in 76.02s (0:01:16)
 ```
 
-La suite automatizada finalizó con 56 pruebas aprobadas y sin fallos reportados por pytest. Después de la ejecución se comprobó que la rama activa era `main` y que el SHA correspondía a `f0894d5511c0562aac5fd813c95f50c182aca73a`.
+La suite automatizada finalizó con 67 pruebas aprobadas y sin fallos reportados por pytest.
+
+La ejecución se realizó sobre la versión de `main` identificada por el SHA `1176f261a976ac8067a7fe4dc543a84a5ba5470e`, después de sincronizar el repositorio local con `origin/main`.
 
 Este resultado corresponde a una ejecución local. No debe presentarse como resultado de GitHub Actions.
 
 ## 4. Estado del repositorio
 
-En la comprobación posterior a la integración documental, `git status --short` no mostró cambios pendientes.
+La actualización local de `main` se realizó mediante `git pull --ff-only origin main`, que finalizó correctamente.
 
-La referencia remota `origin/main` y el `HEAD` local coincidían en el SHA verificado indicado en la sección 1.
+El SHA local resultante coincidió con la versión integrada de `origin/main`:
+
+`1176f261a976ac8067a7fe4dc543a84a5ba5470e`
+
+Después de la sincronización, `git status --short` no mostró cambios pendientes antes de ejecutar la suite de pruebas.
+
+La rama `docs/regresion-integrada-santiago` se creó posteriormente para actualizar este documento mediante un Pull Request, sin modificar directamente la rama principal.
 
 ## 5. Cambios documentales relacionados
 
 - **PR #23:** incorporación del documento inicial de verificación final.
 - **PR #24:** actualización de los resultados de pruebas documentados.
 - **PR #26:** actualización de los criterios de cierre y del guion del PDF final.
+- **PR #28:** integración de la actualización anterior del documento de verificación final.
 
 Enlaces:
 
 - https://github.com/nagiberrioreales-design/reparacampus/pull/23
 - https://github.com/nagiberrioreales-design/reparacampus/pull/24
 - https://github.com/nagiberrioreales-design/reparacampus/pull/26
+- https://github.com/nagiberrioreales-design/reparacampus/pull/28
 
 ## 6. Alcance y observaciones pendientes
 
-Esta verificación acredita el resultado de la suite automatizada para el SHA indicado. Por sí sola, no certifica todos los requisitos funcionales, la seguridad, el despliegue ni la aceptación final del sistema.
+Esta verificación registra el resultado de la suite automatizada para el SHA indicado. Por sí sola, no certifica todos los requisitos funcionales, la seguridad, el despliegue ni la aceptación final del sistema.
 
 Antes de cerrar la entrega, queda pendiente:
 
-1. Revisar el PDF completo y comprobar su correspondencia con la versión definitiva de `main`.
+1. Revisar el PDF completo y comprobar su correspondencia con la versión definitiva acordada por el equipo.
 2. Verificar la legibilidad de los cuatro diagramas UML, las tablas, las capturas y el índice.
 3. Comprobar los enlaces a PR, Issues, referencias y GitHub Actions.
 4. Verificar el resultado de GitHub Actions correspondiente a la versión que se entregará.
@@ -67,6 +77,6 @@ Antes de cerrar la entrega, queda pendiente:
 
 ## 7. Conclusión
 
-En la versión identificada por el SHA `f0894d5511c0562aac5fd813c95f50c182aca73a`, la suite automatizada se ejecutó satisfactoriamente con 56 pruebas aprobadas en 53.37 segundos.
+En la versión identificada por el SHA `1176f261a976ac8067a7fe4dc543a84a5ba5470e`, la suite automatizada se ejecutó satisfactoriamente con 67 pruebas aprobadas en 76.02 segundos.
 
-La validación del PDF y las comprobaciones finales de coordinación, CI y etiquetado quedan pendientes hasta contar con sus respectivas evidencias.
+La revisión del PDF y las comprobaciones finales de coordinación, CI y etiquetado siguen pendientes hasta contar con sus respectivas evidencias.
