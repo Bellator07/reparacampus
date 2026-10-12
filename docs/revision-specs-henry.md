@@ -75,7 +75,7 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 | Fecha/hora | 12/10/2026. Hora exacta pendiente de registrar. |
 | Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado). |
 | Rama de la inspección asistida | `docs/auditoria-tecnica-specs`. |
-| Commit SHA | `03a3a1d11311fb3f4785f0c90299be9ef3bafcaa` (commit publicado en PR #22; actualizar después del próximo commit). |
+| Commit SHA | Cotejo de la rama antes de estos cambios documentales: `fc2f36861cb8e2cb8f91fe944cc64736584f0f3e`. Para el commit documental vigente, consultar el HEAD del PR #22; el SHA de la copia temporal de 58 pruebas no fue comprobado. |
 | Pull Request | PR #22 — `docs/auditoria-tecnica-specs` hacia `main`. Abierto y pendiente de revisión independiente. |
 | Usuario GitHub responsable | `nagiberrioreales-design` (cuenta autora del PR #22). Identidad del responsable de la revisión humana pendiente de confirmar. |
 | Revisor de otro integrante | PENDIENTE de revisión independiente. |
