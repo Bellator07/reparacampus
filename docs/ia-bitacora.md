@@ -53,3 +53,12 @@ En el equipo usamos ChatGPT como apoyo, pero no copiamos toda la conversación a
 - **Error o limitación encontrada:** aunque el PR #6 había sido aprobado antes del código, los archivos S01–S05 todavía conservaban el texto “revisor pendiente”.
 - **Corrección y verificación:** se actualizó únicamente la metadata de revisión para registrar a Steven Reyes y la aprobación del PR #6, sin cambiar las reglas de las SPECS. GitHub Actions del cierre ejecutó 56 pruebas y terminó en success.
 - **Archivo / commit / prueba:** `docs/matriz-spec-codigo.md`, `docs/riesgos.md`, `docs/arquitectura.md`, `docs/contribuciones.md`; PR #16.
+
+## Nota de actualización sobre el cierre posterior (12/10/2026)
+
+Las cuatro intervenciones anteriores reflejan **decisiones y dificultades históricas** en los momentos en que ocurrieron. La expresión «la suite final llegó a 56» y la mención de aportes personales aún pendientes corresponden al cierre inicial, **no a la situación posterior del repositorio**.
+
+- La suite fue ampliada a 67 pruebas en CI, entre otros cambios mediante el PR #22, que recibió revisión independiente `APPROVED` y se fusionó a `main`.
+- Los Issues #12 (Juan), #13 (Leyter), #14 (Milton) y #15 (Santiago) están cerrados y sus aportes documentados. Steven revisó SPECS desde el PR #6 y creó el PR #18, fusionado tras revisión.
+- Los PR adicionales [#25](https://github.com/nagiberrioreales-design/reparacampus/pull/25) y [#27](https://github.com/nagiberrioreales-design/reparacampus/pull/27) siguen abiertos y no integrados: no convertir sus trabajos propuestos en funcionalidades o evidencias de `main` antes de la fusión.
+- Esta nota se agrega como actualización documental; **no altera retrospectivamente el contenido, los prompts ni las decisiones humanas de las cuatro intervenciones originales**.
