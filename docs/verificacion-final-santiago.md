@@ -80,3 +80,13 @@ Antes de cerrar la entrega, queda pendiente:
 En la versión identificada por el SHA `1176f261a976ac8067a7fe4dc543a84a5ba5470e`, la suite automatizada se ejecutó satisfactoriamente con 67 pruebas aprobadas en 76.02 segundos.
 
 La revisión del PDF y las comprobaciones finales de coordinación, CI y etiquetado siguen pendientes hasta contar con sus respectivas evidencias.
+
+## 8. Actualización documental posterior a la verificación local (12/10/2026)
+
+Esta actualización **no modifica ni atribuye a Santiago nuevas ejecuciones locales**; mantiene intacta la evidencia de 67 pruebas aprobadas en el SHA `1176f261a976ac8067a7fe4dc543a84a5ba5470e`.
+
+- [PR #30](https://github.com/nagiberrioreales-design/reparacampus/pull/30), creado desde `snt-10`, fue **fusionado** a `main` el 12/10/2026 (merge SHA `7118eeebec2a22f0846b482dafef2a8f06baf103`).
+- El trabajo `pytest` de [GitHub Actions #38323411541](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38323411541) del PR #30 concluyó con **67 pruebas aprobadas en 26.88 s**, 0 fallidas. Es CI del PR, no una ejecución nueva en `main` después del merge.
+- El Issue #15 de Santiago está cerrado y su comentario sobre instalación, README y arquitectura permanece como evidencia.
+- En las revisiones del PR #30 consultadas no figuró una aprobación formal independiente; no debe afirmarse que la tuvo.
+- **Todavía falta para cerrar la entrega académica:** revisión del PDF IEEE (enlaces, índice navegable, figuras y numeración), acuerdo sobre SHA de entrega y tag `release-examen`, y evidencia de pruebas correspondientes al SHA elegido. No desplazar el tag existente sin consenso del equipo.
