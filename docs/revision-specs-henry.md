@@ -3,7 +3,7 @@
 **Proyecto:** ReparaCampus — Ingeniería de Software I.
 **Tipo:** lista de auditoría posterior a la implementación; no sustituye la revisión previa aprobada en [PR #6](https://github.com/nagiberrioreales-design/reparacampus/pull/6).
 **Responsable de completar y validar:** Henry Berrio.
-**Estado real (12/10/2026):** cotejo guiado de los 43 criterios realizado con Henry y asistencia de IA. Evidencia: 58 pruebas locales aprobadas y 67 en CI, en versiones distintas; observaciones de cobertura documentadas. La revisión independiente y el PDF final permanecen pendientes.
+**Estado real (12/10/2026):** cotejo guiado de los 43 criterios realizado con Henry y asistencia de IA. Evidencia: 58 pruebas locales aprobadas y 67 en CI, en versiones distintas; observaciones de cobertura documentadas. La revisión independiente del PR #22 quedó aprobada desde la cuenta `gmtalentscompany-source` (12/10/2026, 22:57:42 UTC) y el PR fue fusionado a `main` (12/10/2026, 23:07:33 UTC; merge `f982945598c6143ee0ca6eea15cdeea7c07fab00`). Siguen pendientes la aceptación documental definitiva del equipo y el PDF IEEE de entrega.
 **Fecha / usuario GitHub / SHA:** evidencias documentadas en la sección «Datos por completar después de ejecutar»; la cuenta autora del PR no constituye por sí sola prueba de autoría personal de cada verificación.
 
 ## Hallazgo documental corregido
@@ -12,7 +12,7 @@ El antiguo `specs/README.md` mantenía «pendiente de revisión» y «No iniciad
 
 ## Informe de inspección técnica asistida por IA (12/10/2026)
 
-**Naturaleza:** la inspección inicial fue realizada con asistencia de IA mediante lectura estática de fuentes GitHub. Posteriormente, Henry ejecutó las pruebas automatizadas en una copia temporal del repositorio, obteniendo 58 pruebas aprobadas y 0 fallidas el 12/10/2026. Esta evidencia no equivale a una aprobación independiente ni garantiza la ausencia de defectos. La revisión por otro integrante continúa pendiente.
+**Naturaleza:** la inspección inicial fue realizada con asistencia de IA mediante lectura estática de fuentes GitHub. Posteriormente, Henry ejecutó las pruebas automatizadas en una copia temporal del repositorio, obteniendo 58 pruebas aprobadas y 0 fallidas el 12/10/2026. Esta ejecución local y la inspección asistida no garantizan ausencia de defectos ni constituyen por sí solas una aprobación independiente. Con posterioridad, la cuenta `gmtalentscompany-source` registró `APPROVED` en el PR #22, que se fusionó a `main`. La cobertura exhaustiva de las siete observaciones de aserciones permanece sin acreditar.
 
 **Fuentes cotejadas:** las cinco SPECS v0.1; `app/domain.py`, `app/incidents.py`, `app/reporting.py`, `app/auth.py`; `tests/test_s01_unit.py`, `tests/test_s01_integration.py`, `tests/test_s02_priority_assignment.py`, `tests/test_s03_attention_solution.py`, `tests/test_s04_validation_reopen.py`, `tests/test_s05_query_history.py` y `tests/test_integration_flows.py`; matriz `docs/matriz-spec-codigo.md`.
 
@@ -30,7 +30,7 @@ El antiguo `specs/README.md` mantenía «pendiente de revisión» y «No iniciad
 
 **Conclusión limitada:** la lectura no identificó contradicciones evidentes entre las reglas principales y sus funciones correspondientes. La revisión guiada posterior con Henry permitió cotejar los 43 criterios, aunque no acredita ausencia de defectos ni constituye verificación independiente. En particular, las preguntas de `docs/preguntas-cliente.md` continúan como supuestos, no decisiones del cliente.
 
-**Revisión requerida para el cierre:** Henry ya contrastó de forma guiada las 43 correspondencias en conversación, con asistencia de IA. Aún faltan la decisión formal registrada desde la cuenta del responsable, el PDF final y la revisión independiente de otro integrante. Las limitaciones de aserciones deben permanecer visibles.
+**Revisión requerida para el cierre:** Henry ya contrastó de forma guiada las 43 correspondencias en conversación, con asistencia de IA. La revisión independiente quedó registrada como `APPROVED` en el PR #22, ya fusionado. No se acredita una declaración personal adicional de Henry que cierre las siete observaciones; la aceptación final del equipo y el PDF definitivo se mantienen pendientes. Las limitaciones de aserciones deben permanecer visibles.
 
 ## Inspección que debe realizar Henry
 
@@ -65,7 +65,7 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 - [x] Se contrastaron los permisos y transiciones principales con el enunciado y las pruebas existentes; S03-07, S04-08/09 y S05-04/06 tienen ahora cobertura complementaria aprobada en CI. Su verificación humana exhaustiva sigue pendiente.
 - [x] Se ejecutó `py -3.12 -m pytest -q` en la copia temporal (58 aprobadas, 0 fallidas); se registraron el SHA base, los commits del PR #22 y la ejecución exitosa de CI.
 - [x] Se documentaron hallazgos, limitaciones y ampliaciones de pruebas S03, S04 y S05, sin afirmar ausencia total de defectos.
-- [ ] Un integrante diferente revisó el PR #22 y dejó su evaluación.
+- [x] Una cuenta GitHub diferente (`gmtalentscompany-source`) revisó y aprobó el PR #22 el 12/10/2026; el PR se fusionó a `main` el mismo día. No se presupone la identidad personal detrás de esa cuenta.
 - [ ] Se actualizó el PDF final con el aporte efectivamente realizado.
 
 ## Datos por completar después de ejecutar
@@ -76,12 +76,12 @@ Los tres recorridos de integración se encuentran en `tests/test_integration_flo
 | Rama documental anterior | `docs/revision-specs-henry` (PR #19, ya fusionado). |
 | Rama de la inspección asistida | `docs/auditoria-tecnica-specs`. |
 | Commit SHA | Cotejo de la rama antes de estos cambios documentales: `fc2f36861cb8e2cb8f91fe944cc64736584f0f3e`. Para el commit documental vigente, consultar el HEAD del PR #22; el SHA de la copia temporal de 58 pruebas no fue comprobado. |
-| Pull Request | PR #22 — `docs/auditoria-tecnica-specs` hacia `main`. Abierto y pendiente de revisión independiente. |
+| Pull Request | [PR #22](https://github.com/nagiberrioreales-design/reparacampus/pull/22) — `docs/auditoria-tecnica-specs` → `main`, **MERGED** el 12/10/2026 23:07:33 UTC, merge `f982945598c6143ee0ca6eea15cdeea7c07fab00`. |
 | Usuario GitHub responsable | `nagiberrioreales-design` (cuenta autora del PR #22). Identidad del responsable de la revisión humana pendiente de confirmar. |
-| Revisor de otro integrante | PENDIENTE de revisión independiente. |
+| Revisor de otro integrante | `gmtalentscompany-source` — `APPROVED` 12/10/2026 22:57:42 UTC en PR #22. Es una cuenta distinta de la autora. |
 | Pruebas (comando, n.º aprobadas, fallidas, evidencia) | Captura reciente: `py -3.12 -m pytest -q -p no:cacheprovider` — **58 passed in 21.84s**, 0 fallidas, Python 3.12, Windows, `%TEMP%\reparacampus_revision_henry`. En CI del PR #22 se obtuvieron **67 aprobadas** en la versión ampliada; consultar el acta al final de este informe. |
 | Hallazgos y correcciones | La rama del PR contiene nueve pruebas complementarias para S03-07, S04-08/09 y S05-04/06 (67 aprobadas en CI). Se mantienen siete observaciones de aserciones parciales en la matriz y recomendaciones adicionales de rollback, cronología global y cifras exactas en la copia local. |
-| Decisión humana final, con justificación | PENDIENTE: completar después de las verificaciones restantes y la revisión independiente. |
+| Decisión humana final, con justificación | Revisión del PR #22 **aprobada** por `gmtalentscompany-source`; cambios **fusionados** a `main`. No se ha acreditado un pronunciamiento personal adicional de Henry sobre las siete observaciones, ni la aceptación formal del PDF final por el equipo. |
 ## Ejecución general de pruebas — 12/10/2026
 
 Responsable: Henry Berrio.
@@ -110,16 +110,16 @@ Los cambios de la auditoría y las pruebas ampliadas de S03 y S04 fueron publica
 
 GitHub Actions #38286451808 finalizó correctamente con el trabajo `pytest` aprobado.
 
-La revisión independiente de otro integrante y la decisión humana final permanecen pendientes.
+La revisión independiente del PR #22 fue aprobada y el PR está fusionado. Queda pendiente, si el equipo lo exige, un acta personal de cierre de Henry sobre las limitaciones y la aceptación formal del informe definitivo.
 
-**Nota de integridad académica:** este registro fue preparado con asistencia de IA para la inspección y documentación. Las pruebas ejecutadas y las verificaciones realizadas se documentan por separado. La revisión independiente y la aprobación final permanecen pendientes.
+**Nota de integridad académica:** este registro fue preparado con asistencia de IA para la inspección y documentación. Las pruebas ejecutadas y las verificaciones realizadas se documentan por separado. La revisión independiente del PR #22 se realizó y consta aprobada. La aprobación de la entrega final y el cierre exhaustivo de las limitaciones de cobertura son cuestiones distintas y no se dan por acreditadas.
 ## Verificación automatizada complementaria — 12/10/2026
 
 Se incorporó `tests/test_auditoria_henry_criteria.py`, con 9 casos de prueba adicionales dirigidos a los criterios AC-S03-07, AC-S04-08, AC-S04-09, AC-S05-04 y AC-S05-06. Las pruebas se prepararon con asistencia de IA. La primera ejecución encontró una aserción del HTML mal planteada, que fue corregida antes de la validación posterior.
 
 **Resultado de CI confirmado:** `67 passed in 25.88s`, 0 pruebas fallidas en [GitHub Actions #38312929603](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38312929603), correspondiente al commit `a78b5a741c444dc2139e9ef38812f3b334c00091`. El commit documental posterior `d0cf9361d067de5edecf5e09dc982114a5a17d3f` también completó correctamente el trabajo `pytest` en [GitHub Actions #38313123114](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38313123114).
 
-**Alcance:** cobertura automatizada reforzada y evidencias de trazabilidad publicadas en `docs/matriz-spec-codigo.md`. Esto no significa que Henry haya ejecutado personalmente esta nueva batería ni constituye su aprobación humana. El cotejo guiado de las 43 correspondencias se registró posteriormente; la auditoría independiente y la aprobación formal siguen pendientes.
+**Alcance:** cobertura automatizada reforzada y evidencias de trazabilidad publicadas en `docs/matriz-spec-codigo.md`. Esto no significa que Henry haya ejecutado personalmente esta nueva batería ni constituye su aprobación humana. El cotejo guiado de las 43 correspondencias se registró posteriormente; la revisión independiente del PR #22 ya quedó aprobada y fusionada, mientras que la aceptación final del PDF y cualquier declaración individual adicional del responsable no se dan por verificadas.
 
 
 ## Acta de cotejo guiado — 12/10/2026
@@ -132,4 +132,4 @@ Henry Berrio aportó código, pruebas y capturas durante una revisión interacti
 
 **Limitaciones del cotejo.** La matriz conserva siete referencias con cobertura parcial de aserciones: AC-S01-01, AC-S01-02, AC-S01-04, AC-S01-06, AC-S03-02, AC-S04-02 y AC-S04-09. Se recomiendan tres verificaciones complementarias: probar rollback forzado entre actualización e inserción en AC-S04-09; comprobar la cronología global por fecha entre eventos y soluciones en AC-S05-04 (el código actual usa orden ascendente por ID dentro de cada tabla); y corroborar todos los conteos exactos del tablero en la copia local para AC-S05-06 (la suite ampliada de CI ya incluye una prueba adicional). Son limitaciones de evidencia, no tres defectos confirmados.
 
-**Pendientes para cerrar el PR:** decisión formal del responsable en GitHub, revisión independiente de otro integrante y actualización del PDF final. El cotejo guiado y las pruebas aprobadas no sustituyen esos pasos.
+**Estado final del PR #22:** revisión externa `APPROVED` por `gmtalentscompany-source` el 12/10/2026 a las 22:57:42 UTC; fusión a `main` el 12/10/2026 a las 23:07:33 UTC (SHA `f982945598c6143ee0ca6eea15cdeea7c07fab00`). **Pendientes ajenos al cierre del PR:** aceptación del PDF IEEE definitivo por el equipo y verificación complementaria de las siete limitaciones de aserciones si se requiere cobertura exhaustiva. El cotejo asistido y la aprobación del PR no constituyen certificación de ausencia de defectos.
