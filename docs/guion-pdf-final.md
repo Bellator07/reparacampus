@@ -104,8 +104,8 @@ También resumir la implementación de RF01–RF05 y enlazar PR #7 a #11.
 Incluir:
 - Matriz RF → SPEC → AC → código → prueba;
 - Comando `pytest -q`;
-- Última ejecución local registrada: 56 pruebas aprobadas, 0 fallidas, en el SHA e566bf9ee0275ace7e3f6e4550dd69b7dfeb61c9;
-- Resultado de GitHub Actions para la versión definitiva, una vez verificado;
+- Ejecuciones históricas separadas: Milton documentó 56 pruebas locales en un SHA anterior; Henry documentó 58 en copia temporal; Santiago ejecutó 67 pruebas locales sobre `1176f261a976...`. No son equivalentes entre sí;
+- Último CI positivo comprobado para el PR documental #30: [GitHub Actions #38323411541](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38323411541), **67 passed in 26.88s**, sobre `4be3d411a5c6...`; falta verificar la versión concreta que se declare como entrega;
 - Los tres recorridos de integración;
 - Límites 19/20, 800/801, 48 h y 48 h + 1 s;
 - Regresión completa de S01–S05 correspondiente a la versión entregada;
@@ -115,7 +115,7 @@ Fuentes:
 - `docs/resultados-pruebas.md`
 - Historial de GitHub Actions correspondiente a la versión que finalmente se entregue.
 
-**Importante:** las 56 pruebas aprobadas corresponden a la ejecución local registrada. No presentar ese resultado como una ejecución de GitHub Actions.
+**Importante:** no mezclar las 56 pruebas de cierres históricos con las 67 del CI ampliado. El workflow corre con `pull_request` y **no** hay CI `push` registrado para el `main` posterior. Distinguir el SHA de cada evidencia y las siete observaciones de cobertura parcial de aserciones de la auditoría de Henry.
 
 ## 8. Riesgos
 
@@ -133,7 +133,7 @@ Fuente: `docs/riesgos.md`.
 
 Debe quedar:
 - URL del repositorio;
-- Tag release-examen existente y SHA al que apunta, después de verificarlo;
+- Tag histórico `release-examen` comprobado: `b7988274e6173dc13158fd112657e6dc512eb6e0` (release anterior; **no es el SHA del `main` actual**);
 - SHA del código definitivo probado, una vez integrados los cambios pendientes;
 - instalación;
 - arranque;
@@ -149,12 +149,12 @@ Fuente: `README.md`.
 Explicar aportes verificables por integrante.
 
 Estado actual:
-- Henry Berrio: verificable, incluida revisión cruzada en PR #18.
-- Steven Reyes: verificable.
-- Juan González: verificable desde `GM-Talent`.
-- Leyter López: verificable desde `leiter11447-crypto`.
-- Milton Ramírez: verificable desde `Bellator07`.
-- Santiago Hernández: verificable desde `snt-10`.
+- Henry Berrio: revisión cruzada del PR #18 y auditoría de 43 AC (PR #22 aprobado externamente y fusionado, con siete observaciones de aserciones parciales aún documentadas).
+- Steven Reyes: aprobación previa PR #6 y revisión del PR #16; PR documental #18 creado y fusionado.
+- Juan González: Issue #12 y APPROVED PR #16 desde `GM-Talent`; PR #25 de mejoras RF02/RF05 descrito como suyo pero publicado desde `gmtalentscompany-source`, **abierto, aprobado y no fusionable**; no presentar los cambios de PR #25 como ya integrados.
+- Leyter López: Issue #13 cerrado y revisión APPROVED PR #16 desde `leiter11447-crypto`; no consta una nueva revisión personal del último `main`.
+- Milton Ramírez: Issue #14 cerrado y APPROVED PR #16 desde `Bellator07`; PR #27 contiene su informe de 56 pruebas locales anteriores, CI 67, pero **está abierto, sin aprobación formal y no fusionable**.
+- Santiago Hernández: Issue #15 cerrado, PR #23/#24/#26/#28/#30 fusionados desde `snt-10`; informe de 67 pruebas locales en un SHA histórico, CI del PR #30 con 67 aprobadas. Verificar PDF y versión final del equipo.
 - Contrastar los aportes con el archivo de contribuciones y las evidencias reales.
 
 Fuente: `docs/contribuciones.md`.
@@ -173,8 +173,8 @@ Usar las referencias oficiales registradas en `docs/referencias.md`, incluyendo 
 
 1. Confirmar el estado del GitHub Project y sus cuatro estados requeridos.
 2. Verificar GitHub Actions para la versión que se entregará.
-3. Confirmar si quedan integraciones pendientes de otros integrantes.
-4. Obtener el SHA definitivo y verificar a qué commit apunta `release-examen`, sin modificarlo sin acuerdo explícito.
+3. Resolver qué hacer con PR #25 (mejoras visuales; abierto y no fusionable) y PR #27 (informe de Milton; abierto, sin revisión y no fusionable); integrar solo con revisión y permiso, o documentar exclusión.
+4. Acordar el SHA definitivo y distinguirlo del tag histórico `release-examen` (`b7988274...`), sin mover ni recrear el tag sin acuerdo explícito.
 5. Generar el Word y el PDF definitivos con evidencias de esa versión.
-6. Abrir el PDF y comprobar índice, enlaces, nombres, diagramas, tablas y legibilidad.
+6. Abrir el PDF IEEE, comprobar citas y referencias, índices con enlaces internos, figuras y cuatro UML legibles, además de la numeración `n de N` en **todas** las páginas.
 7. Coordinar que todos los integrantes entreguen el mismo PDF.
