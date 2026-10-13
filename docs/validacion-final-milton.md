@@ -1,58 +1,80 @@
 # Informe de Validación Final — ReparaCampus
 
-**Responsable:** Milton Ramírez
+**Responsable:** Milton Ramírez  
+**Alcance:** Pruebas automatizadas, integración, límites, permisos y evidencias de validación  
+**Rama de destino:** `main`  
+**Última actualización:** 13 de octubre de 2026
 
-**Alcance:** Pruebas automatizadas, integración, límites y permisos
+## 1. Resumen de ejecución de pruebas automatizadas
 
-**Rama Base:** Main 
+**Entorno:** Python 3.12, pytest y SQLite.
 
-**Fecha de verificacion:** 12 de octubre de 2026
+### 1.1. Ejecución local histórica
 
-**SHA Verificado** :f6768aebda09f808f43170c3c9881a01324d1328
+- **Commit verificado:** `f6768aebda09f808f43170c3c9881a01324d1328`
+- **Fecha:** 12 de octubre de 2026
+- **Comando:** `python -m pytest -q`
+- **Resultado:** 56 pruebas aprobadas y 0 fallidas.
 
-# 1. Resumen de Ejecución de Pruebas Automatizadas
+Este resultado corresponde exclusivamente a la versión histórica indicada. No representa el estado actual de la rama principal.
 
-**Entorno:** Python 3.12, `pytest`, SQLite.
+### 1.2. Validación de GitHub Actions del PR #27
 
-**comando ejecutado localmente:** `python -m pytest -q`
+Posteriormente, la ejecución automatizada de GitHub Actions asociada al PR #27 registró **67 pruebas aprobadas**, sin fallos.
 
-**Resultado:** 56 pruebas exitosas (`56 passed`, 0 errores / fallos).
+Esta evidencia corresponde al entorno de integración continua del Pull Request y debe diferenciarse de la ejecución local de 56 pruebas.
 
-**conclusion:** el comando al ser ejecutado solto 56 pruebas exitosas sin ningun fallo reportado.
+### 1.3. Regresión local sobre la versión actualizada de main
 
-# 2. Validación de Recorridos de Integración 
+Después de fusionar el PR #25, que incorporó modificaciones visuales al tablero del coordinador, se integró el PR #32 para adaptar las pruebas automatizadas a la nueva estructura HTML.
 
-Se validaron de manera automatizada los tres flujos completos de integración para su correcto funcionamiento antes del despliegue (`tests/test_integration_flows.py`):
-    
-**INT-01 (Flujo nominal feliz):** Registro → Asignación → Inicio de atención → Solución → Cierre exitoso ( `33%` `PASSED`).
+Un integrante del equipo ejecutó la suite completa sobre la rama `main` actualizada:
 
-**INT-02 (Rechazo y reatención):** Registro → Asignación → Solución inicial → Rechazo por usuario → Nueva solución → Cierre (`66%``PASSED`).
+- **Commit:** `e47e5f89bc28b6bb93c66174b15d9d84fbbce03e`
+- **Comando:** `python -m pytest -q`
+- **Resultado:** 67 pruebas aprobadas, 0 fallidas.
+- **Duración:** 25.86 segundos.
 
-**INT-03 (Cierre y reapertura en ventana de 48h):** Registro → Solución → Cierre → Reapertura dentro del plazo → Nueva atención → Cierre definitivo (`100%` `PASSED`).
+Este resultado confirma que la suite automatizada finalizó correctamente en esa versión del repositorio.
 
-## 3. Comprobación por Módulos y Reglas Negativas (S01 – S05)
+## 2. Validación de recorridos de integración
 
-**S01 – Registro / Límites:** Validación correcta de longitudes estrictas (descripción entre 20 y 500 caracteres). Rechazo de descripciones fuera de rango. (`14 passed in 3.26s`).
+Se verificaron los tres recorridos principales mediante las pruebas definidas en `tests/test_integration_flows.py`:
 
-**S02 / S03 – Asignación y Solución:** Validación de longitudes para solución (20 a 800 caracteres) e imposibilidad de avanzar estados saltándose la secuencia del flujo. (`11 passed in 5.59s`).
+**INT-01 — Flujo nominal:** Registro → Asignación → Inicio de atención → Solución → Cierre exitoso.
 
-**S04 – Permisos y Reapertura:** Retorno correcto de códigos `HTTP 403` ante accesos/acciones de usuarios no autorizados o fuera de la ventana de 48 horas. (`11 passed in 5.71s`)
+**INT-02 — Rechazo y reatención:** Registro → Asignación → Solución inicial → Rechazo por el usuario → Nueva solución → Cierre.
 
-**S05 – Estadísticas, Historial y Seguridad:**
+**INT-03 — Reapertura:** Registro → Solución → Cierre → Reapertura dentro de la ventana de 48 horas → Nueva atención → Cierre definitivo.
 
-**Comando usado:** tests/test_s05_query_history.py
-**Pruebas S05:** `9 passed in 7.98s`.
+Los tres escenarios cuentan con pruebas automatizadas. Los porcentajes acumulativos 33 %, 66 % y 100 % se eliminan porque no representan el resultado individual de cada prueba.
 
-**Hallazgos:**  La suite de pruebas no presentó regresiones al ejecutarse los comandos de prueba de los limites del SPECS y los tres recorridos de integracion. Ademas, La sanitización en S05 previene de forma efectiva la ejecución de código tipo inyection o script malicioso (XSS) en las entradas e historial.
+## 3. Comprobación por módulos y reglas negativas
 
-# 4. Clasificacion de criterios:
+Las siguientes evidencias corresponden a las verificaciones históricas realizadas:
 
-**Que cumple**: 56 pruebas aprobadas, , flujos de integración INT-01 a INT-03 validados, S01–S05 verificadas, seguridad y desinfeccion XSS en historial y pytest en verde en Github Actions.
+**S01 — Registro y límites:** Validación de descripciones entre 20 y 500 caracteres y rechazo de entradas fuera de rango. Resultado registrado: 14 pruebas aprobadas.
 
-**Que no cumple** Ninguno.
+**S02 y S03 — Asignación y solución:** Verificación de longitudes de solución entre 20 y 800 caracteres y restricciones de transición entre estados. Resultado registrado: 11 pruebas aprobadas.
 
-**No ejecutado:** Ninguno
+**S04 — Permisos y reapertura:** Comprobación de restricciones de acceso, respuestas HTTP 403 y ventana de reapertura de 48 horas. Resultado registrado: 11 pruebas aprobadas.
 
-**Github Actions:** https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38288668594
+**S05 — Estadísticas, historial y seguridad:** Comprobación de consultas, historial y manejo seguro de contenido en los escenarios automatizados. Resultado registrado: 9 pruebas aprobadas.
 
-**Conclusion:** Basado en los resultados obtenidos en la pruebas y en la plataforma del CI, el proyecto Reparacampos cumple satisfactoriamente con todos los criterios de calidad, seguridad e integración para sus usuarios.
+Estos resultados respaldan los escenarios probados, pero no constituyen por sí solos una certificación de seguridad integral.
+
+## 4. Clasificación de resultados y pendientes
+
+**Cumplimiento verificado:** Las ejecuciones registradas finalizaron sin pruebas fallidas. Los recorridos INT-01, INT-02 e INT-03 cuentan con pruebas automatizadas y la regresión local sobre `main`, commit `e47e5f8`, obtuvo 67 pruebas aprobadas.
+
+**Incumplimientos detectados por las pruebas ejecutadas:** No se registraron fallos en las ejecuciones citadas.
+
+**Aspectos pendientes:** La auditoría de criterios de aceptación identificó necesidades de cobertura o evidencia adicional para AC-S01-01, AC-S01-02, AC-S01-04, AC-S01-06, AC-S03-02, AC-S04-02 y AC-S04-09. La aprobación de las pruebas existentes no demuestra automáticamente cobertura completa de todos los criterios.
+
+## 5. Conclusión
+
+Las evidencias disponibles muestran resultados satisfactorios en las pruebas automatizadas e integración de ReparaCampus.
+
+La ejecución histórica de 56 pruebas, el resultado de 67 pruebas en GitHub Actions del PR #27 y la regresión local de 67 pruebas sobre el commit `e47e5f8` corresponden a verificaciones diferentes y se presentan por separado.
+
+El proyecto dispone de una base funcional verificada para los escenarios automatizados ejecutados. Las necesidades de cobertura adicional identificadas deben conservarse como observaciones de calidad para futuras validaciones.
