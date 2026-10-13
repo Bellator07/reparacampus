@@ -3,7 +3,9 @@
 **Fecha:** 12/10/2026  
 **Rama:** `docs/auditoria-tecnica-specs`  
 **Referencia de auditoría:** [PR #22](https://github.com/nagiberrioreales-design/reparacampus/pull/22)  
-**Naturaleza:** inspección documental y estática asistida por IA; **no es la revisión humana de Henry Berrio ni aprobación independiente**.
+**Naturaleza:** inspección documental y estática inicialmente asistida por IA; esa inspección, por sí sola, **no constituye aprobación personal ni revisión independiente**.
+
+**Actualización posterior verificada:** Henry participó en un cotejo guiado de 43/43 criterios con asistencia de IA; una cuenta diferente, `gmtalentscompany-source`, aprobó formalmente el [PR #22](https://github.com/nagiberrioreales-design/reparacampus/pull/22) el **12/10/2026 22:57:42 UTC**, y el PR se **fusionó a `main`** el **12/10/2026 23:07:33 UTC**. Commit de fusión: `f982945598c6143ee0ca6eea15cdeea7c07fab00`. Esta revisión no elimina automáticamente las siete observaciones de aserciones parciales de la matriz.
 
 ## Alcance verificado
 
@@ -87,11 +89,12 @@ Las observaciones anteriores **no significan que los tests existentes estén fal
 
 Pruebas localizadas en `tests/test_auditoria_henry_criteria.py`. Los nueve casos parametrizados y no parametrizados de esta batería están incluidos en la ejecución con 67 aprobadas.
 
-## Qué falta para cerrar la revisión personal de Henry
+## Estado de las revisiones y pendientes posteriores
 
-- [ ] Henry contrasta personalmente esta inspección y las 43 filas con la SPEC, el código y las aserciones, prestando especial atención a las observaciones anteriores.
-- [ ] Henry deja desde su propia cuenta una conclusión indicando **qué verificó realmente**, el SHA revisado y si acepta las limitaciones de cobertura o pide nuevas pruebas.
-- [ ] Un integrante diferente revisa el PR #22 y deja su evaluación.
-- [ ] El equipo incorpora al PDF final el aporte realmente realizado y las evidencias correspondientes.
+- [x] Henry realizó un **cotejo guiado de las 43 filas** frente a SPEC, código y pruebas, con asistencia de IA. Esta actividad quedó documentada en `docs/revision-specs-henry.md`; **no implica cobertura exhaustiva** de las subaserciones señaladas.
+- [ ] No consta una declaración personal adicional de Henry, desde su cuenta, que cierre expresamente las siete limitaciones de aserciones o solicite nuevas pruebas. No se inventa esa declaración.
+- [x] Una cuenta GitHub diferente (`gmtalentscompany-source`) revisó el PR #22 y registró **`APPROVED`** el 12/10/2026.
+- [x] El PR #22 fue **fusionado** a la rama `main` el 12/10/2026, merge SHA `f982945598c6143ee0ca6eea15cdeea7c07fab00`.
+- [ ] El equipo debe validar y aprobar el **PDF IEEE definitivo**, incorporando el aporte realmente realizado y todas sus evidencias con referencias actuales.
 
-**No marcar como efectuada una revisión humana solo porque la inspección asistida por IA y GitHub Actions hayan finalizado exitosamente.**
+**Distinción necesaria:** cotejo asistido, revisión independiente del Pull Request, validación exhaustiva de criterios y aceptación del PDF definitivo son actividades diferentes. La revisión independiente está completada; los otros alcances se documentan según sus evidencias, sin asumir resultados que no se comprobaron.
