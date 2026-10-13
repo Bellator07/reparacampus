@@ -1,5 +1,20 @@
 # Resultados de pruebas del cierre
 
+## Interpretación vigente de los resultados (actualización documental del 12/10/2026)
+
+Las secciones que siguen son **evidencia histórica** del cierre inicial y de pruebas locales realizadas en versiones anteriores. No deben interpretarse como el resultado automático de la última rama `main`.
+
+| Origen | Versión / SHA o ejecución | Resultado comprobado | Alcance |
+|---|---|---|---|
+| Cierre inicial, PR #16 | CI del PR #16 | 56 pruebas aprobadas, 0 fallidas | Suite previa a la ampliación de auditoría. |
+| Milton, ejecución local declarada | `0d921e6d91f26b29a9ce6347cd17d27b5f5503da` | 56 aprobadas en 32.42 s | Evidencia histórica local; no sustituye las pruebas finales. |
+| Henry, ejecución local documentada | Copia temporal Windows; SHA idéntico al PR no acreditado | 58 aprobadas en 21.84 s | Cotejo guiado; no se confunde con la suite ampliada. |
+| Santiago, ejecución local documentada | `1176f261a976ac8067a7fe4dc543a84a5ba5470e` | 67 aprobadas en 76.02 s | Ejecución local de un `main` anterior; [informe de Santiago](verificacion-final-santiago.md). |
+| CI de la regresión integrada, PR #30 | [GitHub Actions #38323411541](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38323411541), HEAD `4be3d411a5c633d547ac3f77ab4a70aa134562a5` | **67 aprobadas en 26.88 s** | CI positivo de Pull Request; no prueba por sí solo un nuevo workflow en el commit de fusión. |
+| CI de informe adicional de Milton, PR #27 | [GitHub Actions #38320811442](https://github.com/nagiberrioreales-design/reparacampus/actions/runs/38320811442) | **67 aprobadas en 27.10 s** | Trabajo CI del PR aún abierto; su texto menciona 56 pruebas locales históricas. |
+
+**Límite de evidencia:** el workflow `.github/workflows/tests.yml` usa el evento `pull_request`; no se encontró una ejecución GitHub Actions disparada directamente por `push` en `main`. Hay que ejecutar o documentar pruebas sobre el SHA de la versión que el equipo decida entregar. El tag `release-examen` permanece en `b7988274e6173dc13158fd112657e6dc512eb6e0` y no equivale al `main` posterior. El PR #27 de Milton aún no está fusionado.
+
 ## Resultado automático
 
 Comando ejecutado por GitHub Actions:
