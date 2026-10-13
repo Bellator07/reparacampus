@@ -4,7 +4,7 @@ El examen se trabajó con el mismo equipo del proyecto integrador. Para esta ent
 
 | Integrante | Aporte o tarea | Evidencia actual | Revisión de otra persona | Estado |
 |---|---|---|---|---|
-| Henry Berrio | Organización del repositorio, integración de S01–S05, CI y documentación técnica | PR #6 a #11 y commits del repositorio desde `nagiberrioreales-design` | Revisó y aprobó el PR #18 creado por Steven Reyes (`stivenuwu670`) | Verificable |
+| Henry Berrio | Organización del repositorio e integración S01–S05; cotejo guiado asistido de 43 criterios, refuerzo de nueve casos automatizados y documentación de siete límites de cobertura | PR #6–#11; [PR #22](https://github.com/nagiberrioreales-design/reparacampus/pull/22) aprobado y fusionado a `main` (12/10/2026; SHA `f982945598c6143ee0ca6eea15cdeea7c07fab00`). Local: 58 pruebas; CI del PR: 67 aprobadas. | Henry revisó y aprobó el PR #18 de Steven Reyes. La cuenta distinta `gmtalentscompany-source` aprobó el PR #22 antes de fusionarlo. | Aporte verificable; siete observaciones de aserciones parciales permanecen documentadas. |
 | Steven Reyes | Revisión previa de SPECS y revisión de las cinco implementaciones | Aprobaciones en PR #6, #7, #8, #9, #10 y #11 desde `stivenuwu670` | Revisó cambios realizados desde la cuenta principal | Verificable |
 | Juan González | Revisión del modelo de estados, permisos y secuencia de rechazo | Issue #12 comentado desde `GM-Talent`; revisión `APPROVED` en PR #16 | Revisión personal registrada en GitHub | Verificable |
 | Leyter López | Revisión del modelo de datos y consistencia estado/historial | Issue #13 comentado desde `leiter11447-crypto`; revisión `APPROVED` en PR #16 | Revisión personal registrada en GitHub | Verificable |
@@ -13,7 +13,7 @@ El examen se trabajó con el mismo equipo del proyecto integrador. Para esta ent
 
 ## Estado de las evidencias del equipo
 
-Las evidencias personales de Juan, Leyter, Milton y Santiago ya están registradas en GitHub. Henry también completó la revisión cruzada mediante el PR #18 de Steven Reyes. En este punto, los seis integrantes cuentan con evidencia verificable en el repositorio.
+Las evidencias personales de Juan, Leyter, Milton y Santiago ya están registradas en GitHub. Henry también completó la revisión cruzada mediante el PR #18 de Steven Reyes. Además, la auditoría posterior de Henry (PR #22) recibió revisión independiente `APPROVED` y se fusionó a `main`; esa aprobación no equivale a certificar cobertura exhaustiva de los siete criterios con aserciones parciales. En este punto, los seis integrantes cuentan con evidencia verificable en el repositorio.
 
 ## Aceptación del equipo
 
